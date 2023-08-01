@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/pepSound4.ogg-323c81bfb17dfcc066978b988c456fbb.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dgccbg6i8a1k8"
+path="res://.godot/imported/pepSound4.ogg-323c81bfb17dfcc066978b988c456fbb.oggvorbisstr"
 
 [deps]
 
 source_file="res://audio/digital_sfx/source/pepSound4.ogg"
-dest_files=[ "res://.import/pepSound4.ogg-323c81bfb17dfcc066978b988c456fbb.oggstr" ]
+dest_files=["res://.godot/imported/pepSound4.ogg-323c81bfb17dfcc066978b988c456fbb.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

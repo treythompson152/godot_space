@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/time_over.ogg-2e565c6a005ce9d459841b32b533db40.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c40ae7uboj8gf"
+path="res://.godot/imported/time_over.ogg-2e565c6a005ce9d459841b32b533db40.oggvorbisstr"
 
 [deps]
 
 source_file="res://audio/voiceover_male/source/time_over.ogg"
-dest_files=[ "res://.import/time_over.ogg-2e565c6a005ce9d459841b32b533db40.oggstr" ]
+dest_files=["res://.godot/imported/time_over.ogg-2e565c6a005ce9d459841b32b533db40.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

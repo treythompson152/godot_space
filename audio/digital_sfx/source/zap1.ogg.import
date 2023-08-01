@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/zap1.ogg-58895ff7e84ed52de08d13c1b54d933a.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ckmlfgc834xsm"
+path="res://.godot/imported/zap1.ogg-58895ff7e84ed52de08d13c1b54d933a.oggvorbisstr"
 
 [deps]
 
 source_file="res://audio/digital_sfx/source/zap1.ogg"
-dest_files=[ "res://.import/zap1.ogg-58895ff7e84ed52de08d13c1b54d933a.oggstr" ]
+dest_files=["res://.godot/imported/zap1.ogg-58895ff7e84ed52de08d13c1b54d933a.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

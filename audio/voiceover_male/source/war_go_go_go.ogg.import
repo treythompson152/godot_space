@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/war_go_go_go.ogg-b5ad9b6d3268742933c506ef709d3dce.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://2qy67x2q4r1l"
+path="res://.godot/imported/war_go_go_go.ogg-b5ad9b6d3268742933c506ef709d3dce.oggvorbisstr"
 
 [deps]
 
 source_file="res://audio/voiceover_male/source/war_go_go_go.ogg"
-dest_files=[ "res://.import/war_go_go_go.ogg-b5ad9b6d3268742933c506ef709d3dce.oggstr" ]
+dest_files=["res://.godot/imported/war_go_go_go.ogg-b5ad9b6d3268742933c506ef709d3dce.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

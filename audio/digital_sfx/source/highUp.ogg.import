@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/highUp.ogg-7be76a206fa8b037c04f69f83d29602c.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cc5jhsxyd4t7p"
+path="res://.godot/imported/highUp.ogg-7be76a206fa8b037c04f69f83d29602c.oggvorbisstr"
 
 [deps]
 
 source_file="res://audio/digital_sfx/source/highUp.ogg"
-dest_files=[ "res://.import/highUp.ogg-7be76a206fa8b037c04f69f83d29602c.oggstr" ]
+dest_files=["res://.godot/imported/highUp.ogg-7be76a206fa8b037c04f69f83d29602c.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

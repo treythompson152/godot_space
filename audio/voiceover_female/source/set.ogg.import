@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/set.ogg-9e43f241ed65aa6c3f1536f05cb7b012.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bjail1vi46qu8"
+path="res://.godot/imported/set.ogg-9e43f241ed65aa6c3f1536f05cb7b012.oggvorbisstr"
 
 [deps]
 
 source_file="res://audio/voiceover_female/source/set.ogg"
-dest_files=[ "res://.import/set.ogg-9e43f241ed65aa6c3f1536f05cb7b012.oggstr" ]
+dest_files=["res://.godot/imported/set.ogg-9e43f241ed65aa6c3f1536f05cb7b012.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

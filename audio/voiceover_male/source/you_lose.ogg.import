@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/you_lose.ogg-880ded39359c76116dc38784738496db.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://tlaldbxg3ssm"
+path="res://.godot/imported/you_lose.ogg-880ded39359c76116dc38784738496db.oggvorbisstr"
 
 [deps]
 
 source_file="res://audio/voiceover_male/source/you_lose.ogg"
-dest_files=[ "res://.import/you_lose.ogg-880ded39359c76116dc38784738496db.oggstr" ]
+dest_files=["res://.godot/imported/you_lose.ogg-880ded39359c76116dc38784738496db.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

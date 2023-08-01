@@ -1,233 +1,142 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=10 format=3 uid="uid://bj1e1arox3y5v"]
 
-[ext_resource path="res://backgrounds/stars_small_1024.png" type="Texture" id=1]
-[ext_resource path="res://backgrounds/stars_big_1024.png" type="Texture" id=2]
-[ext_resource path="res://player.gd" type="Script" id=3]
-[ext_resource path="res://laser.gd" type="Script" id=4]
-[ext_resource path="res://objects/texture_laser.png" type="Texture" id=5]
-[ext_resource path="res://objects/particles_fireball/0040.png" type="Texture" id=6]
-[ext_resource path="res://ships/redfighter.png" type="Texture" id=7]
-[ext_resource path="res://ships/redfighter_normal.png" type="Texture" id=8]
-[ext_resource path="res://audio/qubodup-crash.ogg" type="AudioStream" id=9]
-[ext_resource path="res://enemy_spawner.gd" type="Script" id=10]
-[ext_resource path="res://enemy_static.tscn" type="PackedScene" id=11]
-[ext_resource path="res://enemy.tscn" type="PackedScene" id=12]
-[ext_resource path="res://enemy_fast.tscn" type="PackedScene" id=13]
-[ext_resource path="res://white.png" type="Texture" id=14]
-[ext_resource path="res://interface/fonts/kenvector_future_32.tres" type="DynamicFont" id=15]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 24.2363, 313.249 )
-
-[sub_resource type="Animation" id=2]
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0, 11 ]
-}
-
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.054902, 1, 0, 1 )
-
-[sub_resource type="StyleBoxEmpty" id=4]
-
-[sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 1, 0, 0, 1 )
+[ext_resource type="Texture2D" uid="uid://bdolo6x7eefc0" path="res://backgrounds/stars_small_1024.png" id="1"]
+[ext_resource type="Script" path="res://player.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://crffww7jqedui" path="res://backgrounds/stars_big_1024.png" id="2_m4k8r"]
+[ext_resource type="Texture2D" uid="uid://dgpxvheodhfkw" path="res://objects/particles_fireball/0040.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cl11o2wt1j06r" path="res://ships/redfighter.png" id="4"]
+[ext_resource type="AudioStream" uid="uid://c5yc8c2d4nrrq" path="res://audio/qubodup-crash.ogg" id="6"]
+[ext_resource type="PackedScene" uid="uid://bnea7wtxcl1pn" path="res://enemy.tscn" id="7"]
+[ext_resource type="Texture2D" uid="uid://bbl3rtgw0ekt6" path="res://white.png" id="8"]
+[ext_resource type="FontFile" path="res://interface/fonts/kenvector_future_32.tres" id="9"]
 
 [node name="main" type="Node2D"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-editor/display_folded = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 0.5, 0.5 )
-motion_mirroring = Vector2( 15360, 15360 )
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(15360, 15360)
 
-[node name="stars_small_1024" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 7680, 7680 )
-scale = Vector2( 15, 15 )
-texture = ExtResource( 1 )
+[node name="stars_small_1024" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(7680, 7680)
+scale = Vector2(15, 15)
+texture = ExtResource("1")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 15360, 15360 )
+motion_mirroring = Vector2(15360, 15360)
 
-[node name="stars_big_1024" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( 7680, 7680 )
-scale = Vector2( 15, 15 )
-texture = ExtResource( 2 )
+[node name="StarsBig1024" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(494, 339)
+texture = ExtResource("2_m4k8r")
 
 [node name="bullets" type="Node2D" parent="."]
 
 [node name="player" type="Area2D" parent="."]
 light_mask = 3
-position = Vector2( 0, -1.5 )
+position = Vector2(221.843, 301.443)
 collision_mask = 2
-script = ExtResource( 3 )
-
-[node name="laser" type="Area2D" parent="player"]
-visible = false
-position = Vector2( -60, 0 )
-collision_mask = 2
-script = ExtResource( 4 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player/laser"]
-position = Vector2( 1818.4, -0.301701 )
-rotation = 1.5708
-scale = Vector2( 2.13736, 5.30441 )
-shape = SubResource( 1 )
-
-[node name="texture_laser" type="Sprite" parent="player/laser"]
-editor/display_folded = true
-light_mask = 0
-position = Vector2( 1818.4, 2.09485 )
-rotation = 1.5708
-scale = Vector2( 3.2794, 5.30441 )
-texture = ExtResource( 5 )
-vframes = 3
-hframes = 4
-
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="player/laser/texture_laser"]
-autoplay = "laser"
-anims/laser = SubResource( 2 )
+script = ExtResource("2")
+velocity = 1600
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="player"]
+position = Vector2(-100.306, 10.4972)
 rotation = 3.14159
-amount = 50
-local_coords = false
-texture = ExtResource( 6 )
+amount = 60
+lifetime = 0.2
+texture = ExtResource("3")
 spread = 31.74
-gravity = Vector2( 0, 0 )
-initial_velocity = 431.05
-initial_velocity_random = 0.33
-angular_velocity = 469.9
-angular_velocity_random = 1.0
-linear_accel = -100.0
-scale_amount = 0.5
-color = Color( 1, 0.333333, 0.333333, 1 )
-hue_variation = 0.01
+gravity = Vector2(1, 0)
+initial_velocity_min = 174.41
+initial_velocity_max = 174.41
+angular_velocity_min = 4.6
+angular_velocity_max = 94.6
 
-[node name="Camera2D" type="Camera2D" parent="player"]
-current = true
-zoom = Vector2( 4, 4 )
-drag_margin_h_enabled = false
-drag_margin_v_enabled = false
-smoothing_enabled = true
-drag_margin_left = 0.0
-drag_margin_top = 0.0
-drag_margin_right = 0.0
-drag_margin_bottom = 0.0
-editor_draw_limits = true
-editor_draw_drag_margin = true
-
-[node name="redfighter" type="Sprite" parent="player"]
-position = Vector2( 0, 1.5 )
-texture = ExtResource( 7 )
-normal_map = ExtResource( 8 )
+[node name="redfighter" type="Sprite2D" parent="player"]
+position = Vector2(0, 1.5)
+texture = ExtResource("4")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="player"]
 visible = false
-position = Vector2( 0, 1.5 )
-polygon = PoolVector2Array( -14.5, -165.2, -14.5, -161.7, 26.5, -123.7, 26.5, -109.5, 21.3, -111.3, 21.5, -108.5, 21.5, -106.2, 22.8, -104.7, 21.5, -103.6, -19.6, -67.5, -25, -67.5, -34.1, -69.4, -34.6, -66.5, -22, -66.5, 2.5, -50.2, 2.5, -44.8, 40.5, -58.7, 40.5, -54.3, 87.1, -41.5, 93.2, -41.5, 117.5, -42.8, 117.5, -39.6, 158.5, -18.6, 158.5, -13.5, 160.3, -1.5, 149.4, -1.5, 140.5, -5.5, 140.5, -3, 142.1, 4.8, 149.4, 1.5, 159.5, 1.5, 159.5, 18.5, 154.8, 18.5, 113.9, 42.5, 96.2, 42.5, 36.1, 56.5, 32.6, 56.5, 3.2, 46.1, 1.10001, 52.5, -1.89999, 52.5, -21.9, 66.5, -35.1, 66.5, -34.9, 68.5, -15.5, 68.5, -15.5, 72.1, 26.5, 106.1, 26.5, 118.4, 22, 117.7, 22.5, 119.5, 22.5, 120.5, 25, 123.1, -19.5, 166.5, -28.3, 166.5, -61.5, 167.7, -61.5, 164.5, -85.5, 151.5, -85.5, 143.5, -84.9, 142.2, -182.5, 133.1, -182.5, 107.5, -175.1, 107.5, -114.2, 90.5, -106.1, 90.5, -87.9, 93.1, -81, 88.1, -97, 66.5, -104.6, 66.5, -141.5, 65.3, -141.5, 61.8, -154.4, 50.5, -160, 50.5, -184.5, 45.6, -184.5, 36.3, -172.6, 12.5, -169.1, 12.5, -165.5, 12.1, -165.5, -11.5, -171.4, -11.5, -189.1, -42.5, -180.4, -42.5, -154.7, -50.5, -138.5, -65.5, -110.8, -65.5, -98.7, -66.3, -81.7, -88.4, -87.4, -93.5, -118.5, -89.9, -118.5, -92.6, -182.5, -108.6, -182.5, -113.5, -185.3, -131.5, -179.1, -131.5, -124, -143.5, -119.4, -143.5, -84.4, -142.6, -86.6, -153.5, -79.8, -153.5, -61.5, -164.3, -61.5, -167.8 )
+position = Vector2(0, 1.5)
+polygon = PackedVector2Array(-14.5, -165.2, -14.5, -161.7, 26.5, -123.7, 26.5, -109.5, 21.3, -111.3, 21.5, -108.5, 21.5, -106.2, 22.8, -104.7, 21.5, -103.6, -19.6, -67.5, -25, -67.5, -34.1, -69.4, -34.6, -66.5, -22, -66.5, 2.5, -50.2, 2.5, -44.8, 40.5, -58.7, 40.5, -54.3, 87.1, -41.5, 93.2, -41.5, 117.5, -42.8, 117.5, -39.6, 158.5, -18.6, 158.5, -13.5, 160.3, -1.5, 149.4, -1.5, 140.5, -5.5, 140.5, -3, 142.1, 4.8, 149.4, 1.5, 159.5, 1.5, 159.5, 18.5, 154.8, 18.5, 113.9, 42.5, 96.2, 42.5, 36.1, 56.5, 32.6, 56.5, 3.2, 46.1, 1.10001, 52.5, -1.89999, 52.5, -21.9, 66.5, -35.1, 66.5, -34.9, 68.5, -15.5, 68.5, -15.5, 72.1, 26.5, 106.1, 26.5, 118.4, 22, 117.7, 22.5, 119.5, 22.5, 120.5, 25, 123.1, -19.5, 166.5, -28.3, 166.5, -61.5, 167.7, -61.5, 164.5, -85.5, 151.5, -85.5, 143.5, -84.9, 142.2, -182.5, 133.1, -182.5, 107.5, -175.1, 107.5, -114.2, 90.5, -106.1, 90.5, -87.9, 93.1, -81, 88.1, -97, 66.5, -104.6, 66.5, -141.5, 65.3, -141.5, 61.8, -154.4, 50.5, -160, 50.5, -184.5, 45.6, -184.5, 36.3, -172.6, 12.5, -169.1, 12.5, -165.5, 12.1, -165.5, -11.5, -171.4, -11.5, -189.1, -42.5, -180.4, -42.5, -154.7, -50.5, -138.5, -65.5, -110.8, -65.5, -98.7, -66.3, -81.7, -88.4, -87.4, -93.5, -118.5, -89.9, -118.5, -92.6, -182.5, -108.6, -182.5, -113.5, -185.3, -131.5, -179.1, -131.5, -124, -143.5, -119.4, -143.5, -84.4, -142.6, -86.6, -153.5, -79.8, -153.5, -61.5, -164.3, -61.5, -167.8)
 
 [node name="crash_sound" type="AudioStreamPlayer" parent="player"]
-stream = ExtResource( 9 )
+stream = ExtResource("6")
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+zoom = Vector2(0.25, 0.25)
+drag_left_margin = 0.0
+drag_top_margin = 0.0
+drag_right_margin = 0.0
+drag_bottom_margin = 0.0
 
 [node name="enemies" type="Node2D" parent="."]
 
-[node name="static_enemy_spawner" type="Timer" parent="enemies"]
-wait_time = 0.1
-autostart = true
-script = ExtResource( 10 )
-Enemy = ExtResource( 11 )
-MAX_ENEMIES = 40
-MAX_SCORE = 5
+[node name="enemy" parent="enemies" instance=ExtResource("7")]
+position = Vector2(636, 800)
+rotation = -0.837758
 
-[node name="enemy_spawner" type="Timer" parent="enemies"]
-wait_time = 2.0
-autostart = true
-script = ExtResource( 10 )
-Enemy = ExtResource( 12 )
-MAX_ENEMIES = 5
-MIN_SCORE = 5
+[node name="enemy2" parent="enemies" instance=ExtResource("7")]
+position = Vector2(1564, 394)
 
-[node name="fast_enemy_spawner" type="Timer" parent="enemies"]
-wait_time = 3.0
-autostart = true
-script = ExtResource( 10 )
-Enemy = ExtResource( 13 )
-MAX_ENEMIES = 1
-MIN_SCORE = 15
+[node name="enemy3" parent="enemies" instance=ExtResource("7")]
+position = Vector2(1196, 1334)
+rotation = 0.886627
+VELOCITY = 1200.0
 
-[node name="enemy_spawner2" type="Timer" parent="enemies"]
-wait_time = 2.0
-autostart = true
-script = ExtResource( 10 )
-Enemy = ExtResource( 12 )
-MAX_ENEMIES = 3
-MIN_SCORE = 20
+[node name="enemy5" parent="enemies" instance=ExtResource("7")]
+position = Vector2(1294, 968)
+rotation = 3.29867
+VELOCITY = 1400.0
 
-[node name="fast_enemy_spawner2" type="Timer" parent="enemies"]
-wait_time = 3.0
-autostart = true
-script = ExtResource( 10 )
-Enemy = ExtResource( 13 )
-MAX_ENEMIES = 1
-MIN_SCORE = 30
+[node name="enemy6" parent="enemies" instance=ExtResource("7")]
+position = Vector2(1970, 1206)
+rotation = -0.558505
+
+[node name="enemy7" parent="enemies" instance=ExtResource("7")]
+position = Vector2(2050, 700)
+VELOCITY = 2000.0
+
+[node name="enemy4" parent="enemies" instance=ExtResource("7")]
+position = Vector2(460, 1520)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="Light2D" type="Light2D" parent="HUD"]
-position = Vector2( 5120, 5120 )
-scale = Vector2( 10, 10 )
-texture = ExtResource( 14 )
+[node name="PointLight2D" type="PointLight2D" parent="HUD"]
+position = Vector2(5120, 5120)
+scale = Vector2(10, 10)
 energy = 5.0
 range_item_cull_mask = 3
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_gradient_length = 289.6
+shadow_color = Color(0, 0, 0, 1)
+texture = ExtResource("8")
 
 [node name="charge" type="ProgressBar" parent="HUD"]
-margin_right = 630.0
-margin_bottom = 30.0
-custom_styles/fg = SubResource( 3 )
-custom_styles/bg = SubResource( 4 )
+offset_right = 630.0
+offset_bottom = 30.0
 max_value = 3.0
 value = 3.0
-percent_visible = false
 
 [node name="health" type="ProgressBar" parent="HUD"]
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -580.0
-margin_bottom = 30.0
-custom_styles/fg = SubResource( 5 )
-custom_styles/bg = SubResource( 4 )
+offset_left = -580.0
+offset_bottom = 30.0
 max_value = 10.0
 step = 1.0
 value = 10.0
-percent_visible = false
 
 [node name="score" type="Label" parent="HUD"]
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -540.0
-margin_right = 30.0
-margin_bottom = -504.0
-custom_fonts/font = ExtResource( 15 )
+offset_top = -361.0
+offset_right = 50.0
+offset_bottom = -325.0
+theme_override_fonts/font = ExtResource("9")
 text = "0"
+
 [connection signal="area_entered" from="player" to="player" method="_on_player_area_entered"]
-[connection signal="timeout" from="enemies/static_enemy_spawner" to="enemies/static_enemy_spawner" method="_on_enemy_spawner_timeout"]
-[connection signal="timeout" from="enemies/enemy_spawner" to="enemies/enemy_spawner" method="_on_enemy_spawner_timeout"]
-[connection signal="timeout" from="enemies/fast_enemy_spawner" to="enemies/fast_enemy_spawner" method="_on_enemy_spawner_timeout"]
-[connection signal="timeout" from="enemies/enemy_spawner2" to="enemies/enemy_spawner2" method="_on_enemy_spawner_timeout"]
-[connection signal="timeout" from="enemies/fast_enemy_spawner2" to="enemies/fast_enemy_spawner2" method="_on_enemy_spawner_timeout"]

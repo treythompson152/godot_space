@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/switch30.ogg-8d0e1657941f7fe6bb0736bd2bb30ecd.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bt01tqt6sjgpp"
+path="res://.godot/imported/switch30.ogg-8d0e1657941f7fe6bb0736bd2bb30ecd.oggvorbisstr"
 
 [deps]
 
 source_file="res://audio/ui_sfx/source/switch30.ogg"
-dest_files=[ "res://.import/switch30.ogg-8d0e1657941f7fe6bb0736bd2bb30ecd.oggstr" ]
+dest_files=["res://.godot/imported/switch30.ogg-8d0e1657941f7fe6bb0736bd2bb30ecd.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

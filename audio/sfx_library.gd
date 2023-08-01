@@ -1,6 +1,6 @@
 extends Node
 
-export (String, DIR) var source_directory
+@export (String, DIR) var source_directory
 
 func _ready():
 	pass

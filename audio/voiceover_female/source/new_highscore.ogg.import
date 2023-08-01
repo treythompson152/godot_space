@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/new_highscore.ogg-431ab3bd5b606339ab879b93f3ebf118.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bg6hjvvf511p2"
+path="res://.godot/imported/new_highscore.ogg-431ab3bd5b606339ab879b93f3ebf118.oggvorbisstr"
 
 [deps]
 
 source_file="res://audio/voiceover_female/source/new_highscore.ogg"
-dest_files=[ "res://.import/new_highscore.ogg-431ab3bd5b606339ab879b93f3ebf118.oggstr" ]
+dest_files=["res://.godot/imported/new_highscore.ogg-431ab3bd5b606339ab879b93f3ebf118.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/mission_failed.ogg-ae608e0890fb5ec220fb33e6190d947b.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cdh6ay2ja5djn"
+path="res://.godot/imported/mission_failed.ogg-ae608e0890fb5ec220fb33e6190d947b.oggvorbisstr"
 
 [deps]
 
 source_file="res://audio/voiceover_male/source/mission_failed.ogg"
-dest_files=[ "res://.import/mission_failed.ogg-ae608e0890fb5ec220fb33e6190d947b.oggstr" ]
+dest_files=["res://.godot/imported/mission_failed.ogg-ae608e0890fb5ec220fb33e6190d947b.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

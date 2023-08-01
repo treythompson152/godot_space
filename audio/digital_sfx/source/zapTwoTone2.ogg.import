@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/zapTwoTone2.ogg-ff14af137e315410bfe1a89090119775.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://btqmm7fbn1mpk"
+path="res://.godot/imported/zapTwoTone2.ogg-ff14af137e315410bfe1a89090119775.oggvorbisstr"
 
 [deps]
 
 source_file="res://audio/digital_sfx/source/zapTwoTone2.ogg"
-dest_files=[ "res://.import/zapTwoTone2.ogg-ff14af137e315410bfe1a89090119775.oggstr" ]
+dest_files=["res://.godot/imported/zapTwoTone2.ogg-ff14af137e315410bfe1a89090119775.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

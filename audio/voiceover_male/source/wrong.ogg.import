@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/wrong.ogg-ae6b47eb4883fbeb25d9f508df0ad302.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bbak72jklypra"
+path="res://.godot/imported/wrong.ogg-ae6b47eb4883fbeb25d9f508df0ad302.oggvorbisstr"
 
 [deps]
 
 source_file="res://audio/voiceover_male/source/wrong.ogg"
-dest_files=[ "res://.import/wrong.ogg-ae6b47eb4883fbeb25d9f508df0ad302.oggstr" ]
+dest_files=["res://.godot/imported/wrong.ogg-ae6b47eb4883fbeb25d9f508df0ad302.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
