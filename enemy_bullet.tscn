@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://nay8mrga3o2p"]
+[gd_scene load_steps=5 format=3 uid="uid://bdfw0rf05k6vy"]
 
 [ext_resource type="Script" path="res://bullet.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://b3aavghbh5hvw" path="res://objects/bullet.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://dcjxnehni1iov" path="res://objects/bullet.png" id="2"]
 
 [sub_resource type="CircleShape2D" id="1"]
 radius = 57.3321

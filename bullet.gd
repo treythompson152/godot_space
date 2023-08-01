@@ -12,12 +12,11 @@ func init(parent, vel):
 		rotation = parent.rotation
 		velocity = vel
 		parent.get_node("/root/main/bullets").add_child(self)
-		
+
 func _process(delta):
 	position += Vector2.RIGHT.rotated(rotation) * velocity * delta
 	if position.distance_to(player.position) > 5000:
 		queue_free()
-
 
 func _on_bullet_area_entered(area):
 	queue_free()

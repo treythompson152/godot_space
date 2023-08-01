@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8v3iq5pdafw8"]
+
+[ext_resource type="FontFile" path="res://interface/fonts/kenvector_future_32.tres" id="1_u60rl"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="charge" type="ProgressBar" parent="."]
+offset_right = 630.0
+offset_bottom = 30.0
+max_value = 3.0
+value = 3.0
+
+[node name="health" type="ProgressBar" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -580.0
+offset_bottom = 30.0
+max_value = 10.0
+step = 1.0
+value = 10.0
+
+[node name="score" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -361.0
+offset_right = 50.0
+offset_bottom = -325.0
+theme_override_fonts/font = ExtResource("1_u60rl")
+text = "0"

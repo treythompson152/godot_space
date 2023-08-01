@@ -21,13 +21,13 @@ func _process(delta):
 func gamepad(delta):
 	pass
 
-
 func _on_player_area_entered(area):
 	health -= 1
 	get_node("../HUD/health").value = health
 	if health <= 0:
 		get_tree().reload_current_scene()
 	$crash_sound.play()
-	modulate = Color(1000, 0, 0, 255)
-	await get_tree().create_timer(1.0)
-	modulate = Color(1, 1, 1, 255) 
+	#modulate = Color(1000, 0, 0, 255)
+	await get_tree().create_timer(1.0).timeout
+	#modulate = Color(1, 1, 1, 255) 
+	

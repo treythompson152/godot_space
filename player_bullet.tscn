@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://c61v5txr1cn0q"]
+[gd_scene load_steps=5 format=3 uid="uid://d2pvk4pi6vscy"]
 
 [ext_resource type="Script" path="res://bullet.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://ce38x35dqydbm" path="res://objects/lasers.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://b71snay7o2hp0" path="res://objects/lasers.png" id="2"]
 
 [sub_resource type="CapsuleShape2D" id="1"]
 radius = 16.074
-height = 82.7269
+height = 116.0
 
 [sub_resource type="AudioStreamRandomizer" id="2"]
 

@@ -1,9 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://bnea7wtxcl1pn"]
+[gd_scene load_steps=9 format=3 uid="uid://dwhgg8c1f3qk5"]
 
-[ext_resource type="Texture2D" uid="uid://dea4qkp0560t" path="res://ships/Faction10-Spaceships-by-MillionthVector/destroyer.png" id="1"]
-[ext_resource type="Script" path="res://enemy.gd" id="1_od51s"]
-[ext_resource type="Texture2D" uid="uid://bo205lufm60lb" path="res://objects/sparkling-fireball-small.png" id="3"]
-[ext_resource type="AudioStream" uid="uid://c7bvr1rdsri7n" path="res://audio/explosion.wav" id="4"]
+[ext_resource type="Texture2D" uid="uid://cif5ypaknhkf6" path="res://ships/Faction10-Spaceships-by-MillionthVector/destroyer.png" id="1"]
+[ext_resource type="Script" path="res://enemy.gd" id="1_0byes"]
+[ext_resource type="Texture2D" uid="uid://e4othb37xv2h" path="res://objects/sparkling-fireball-small.png" id="3"]
+[ext_resource type="AudioStream" uid="uid://ksnxjha6mcr0" path="res://audio/explosion.wav" id="4"]
+
+[sub_resource type="CanvasItemMaterial" id="2"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="3"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0.0079561, 200), 0.0, 0.0, 0, 0, Vector2(0.525052, -200), -289.802, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Animation" id="1"]
 resource_name = "fade"
@@ -20,31 +32,32 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_gmi2g"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_42o2e"]
 _data = {
 "fade": SubResource("1")
 }
 
-[sub_resource type="CanvasItemMaterial" id="2"]
-particles_animation = true
-particles_anim_h_frames = 8
-particles_anim_v_frames = 7
-particles_anim_loop = false
-
-[sub_resource type="Curve" id="3"]
-min_value = -200.0
-max_value = 200.0
-_data = [Vector2(0.0079561, 200), 0.0, 0.0, 0, 0, Vector2(0.525052, -200), -289.802, 0.0, 0, 0]
-point_count = 2
-
 [node name="enemy" type="Area2D"]
 position = Vector2(0.801025, -0.809296)
 collision_layer = 2
-script = ExtResource("1_od51s")
+script = ExtResource("1_0byes")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+visible = false
+material = SubResource("2")
+emitting = false
+amount = 1
+one_shot = true
+preprocess = 0.3
+fixed_fps = 50
+texture = ExtResource("3")
+spread = 180.0
+gravity = Vector2(0, 0)
+linear_accel_curve = SubResource("3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_gmi2g")
+"": SubResource("AnimationLibrary_42o2e")
 }
 
 [node name="destroyer" type="Sprite2D" parent="."]
@@ -54,19 +67,6 @@ texture = ExtResource("1")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(-0.252014, 12.494)
 polygon = PackedVector2Array(-131, -168.4, -131, -160.7, -115, -133.5, 3, -119.9, 3, -113.6, 25.7, -86, 30.3, -86, 136, -93.8, 136, -83.2, 138.8, -72, 231, -29.4, 231, -22.5, 234.4, 3, 230, 3, 230, 5, 235.2, 31, 223.6, 31, 168.5, 49.1, 141, 67.3, 141, 68.2, 134.8, 93, 115.6, 93, 26.4, 86.4, 1, 120, -6.60001, 120, -114.2, 133.2, -135.3, 169, -152.2, 169, -202, 172.8, -202, 162.9, -206, 152, -209.2, 152, -239, 144.6, -239, 126, -233, 126, -204.5, 113.8, -173.6, 54.3, -232.9, 40.8, -230.9, 23, -224.4, 23, -198.4, 3, -140, 3, -140, -2.10001, -205, -3.2, -205, -9, -232, -29, -232, -45.7, -171.2, -54.2, -179.2, -76.4, -201, -80.8, -201, -90.9, -204.5, -111, -207.7, -111, -239, -129.5, -239, -152, -206.5, -152, -202, -162.9, -202, -172.6)
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-visible = false
-material = SubResource("2")
-emitting = false
-amount = 50
-one_shot = true
-preprocess = 0.3
-fixed_fps = 50
-texture = ExtResource("3")
-spread = 180.0
-gravity = Vector2(0, 0)
-linear_accel_curve = SubResource("3")
 
 [node name="explosion" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4")
