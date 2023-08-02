@@ -1,10 +1,13 @@
 extends Area2D
 
+signal dead
+
 @export var velocity = 0
 @export var turning = 4.0
 @export var health = 10
 
 var Bullet = preload("res://player_bullet.tscn")
+var Explosion = preload("res://explosion.tscn")
 var score = 0
 
 func _process(delta):
@@ -26,8 +29,7 @@ func _on_player_area_entered(area):
 	get_node("../HUD/health").value = health
 	if health <= 0:
 		get_tree().reload_current_scene()
+		dead.emit()
 	$crash_sound.play()
-	#modulate = Color(1000, 0, 0, 255)
 	await get_tree().create_timer(1.0).timeout
-	#modulate = Color(1, 1, 1, 255) 
 	

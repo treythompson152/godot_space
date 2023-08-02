@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwhgg8c1f3qk5"]
+[gd_scene load_steps=10 format=3 uid="uid://dwhgg8c1f3qk5"]
 
 [ext_resource type="Texture2D" uid="uid://cif5ypaknhkf6" path="res://ships/Faction10-Spaceships-by-MillionthVector/destroyer.png" id="1"]
 [ext_resource type="Script" path="res://enemy.gd" id="1_0byes"]
@@ -32,12 +32,17 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_5cl16"]
+resource_name = "explosion"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_42o2e"]
 _data = {
+"explosion": SubResource("Animation_5cl16"),
 "fade": SubResource("1")
 }
 
 [node name="enemy" type="Area2D"]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(0.801025, -0.809296)
 collision_layer = 2
 script = ExtResource("1_0byes")

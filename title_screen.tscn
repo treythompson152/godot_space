@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://nerbd4aiw0se"]
+
+[ext_resource type="FontFile" uid="uid://cndm7urjb1pck" path="res://interface/fonts/kenvector_future_thin.ttf" id="1_3h1ah"]
+[ext_resource type="Script" path="res://title_screen.gd" id="1_5sxyq"]
+[ext_resource type="FontFile" uid="uid://dctotd3cu671j" path="res://interface/fonts/kenvector_future.ttf" id="2_emtw2"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_t71y2"]
+action = &"start_game"
+
+[sub_resource type="Shortcut" id="Shortcut_b8vtw"]
+events = [SubResource("InputEventAction_t71y2")]
+
+[node name="TitleScreen" type="CanvasLayer"]
+script = ExtResource("1_5sxyq")
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.722
+anchor_right = 0.5
+anchor_bottom = 0.722
+offset_left = -168.0
+offset_top = -47.84
+offset_right = 161.0
+offset_bottom = 67.16
+theme_override_colors/font_color = Color(0.745098, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_3h1ah")
+theme_override_font_sizes/font_size = 42
+shortcut = SubResource("Shortcut_b8vtw")
+text = "Blast Off!"
+
+[node name="Title" type="Label" parent="."]
+offset_top = 112.0
+offset_right = 1280.0
+offset_bottom = 208.0
+theme_override_fonts/font = ExtResource("2_emtw2")
+theme_override_font_sizes/font_size = 80
+text = "Stellar Outcast:
+"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Subtitle" type="Label" parent="."]
+offset_top = 200.0
+offset_right = 1280.0
+offset_bottom = 296.0
+theme_override_fonts/font = ExtResource("2_emtw2")
+theme_override_font_sizes/font_size = 60
+text = "Eternal Intruders"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

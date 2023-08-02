@@ -5,6 +5,7 @@ extends Area2D
 @export var FIRE_RATE = 0.01
 
 var Bullet = preload("res://enemy_bullet.tscn")
+var Explosion = preload("res://explosion.tscn")
 @onready var player = get_node("/root/main/player")
 
 func _ready():
@@ -24,11 +25,13 @@ func _process(delta):
 
 
 func _on_enemy_area_entered(area):
+	var explosion_instance = Explosion.instantiate()
+	get_parent().add_child(explosion_instance)
+	explosion_instance.position = position
+	explosion_instance.get_node("AnimatedSprite2D").play()
 	$explosion.play()
 	$AnimationPlayer.play("fade")
 	$CollisionPolygon2D.queue_free()
-	#$AnimatedSprite2D.show()
-	#$CPUParticles2D.show()
 	player.score += 1
 	get_node("/root/main/HUD/score").text = str(player.score)
 	await get_tree().create_timer(1.0).timeout
