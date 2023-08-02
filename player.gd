@@ -1,14 +1,15 @@
 extends Area2D
 
 signal dead
+signal win
 
-@export var velocity = 0
+@export var velocity = 2000
 @export var turning = 4.0
 @export var health = 10
 
 var Bullet = preload("res://player_bullet.tscn")
 var Explosion = preload("res://explosion.tscn")
-var score = 0
+@export var score = 0
 
 func _process(delta):
 	if Input.is_action_pressed("turn_left"):
@@ -20,7 +21,10 @@ func _process(delta):
 
 	gamepad(delta)
 	position += Vector2.RIGHT.rotated(rotation) * velocity * delta
-	
+	if score == 1:
+		await get_tree().create_timer(2.0).timeout
+		get_tree().reload_current_scene()
+		win.emit()
 func gamepad(delta):
 	pass
 

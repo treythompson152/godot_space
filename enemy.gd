@@ -31,8 +31,8 @@ func _on_enemy_area_entered(area):
 	explosion_instance.get_node("AnimatedSprite2D").play()
 	$explosion.play()
 	$AnimationPlayer.play("fade")
-	$CollisionPolygon2D.queue_free()
+	#$CollisionPolygon2D.queue_free()
 	player.score += 1
 	get_node("/root/main/HUD/score").text = str(player.score)
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.5).timeout
 	queue_free()

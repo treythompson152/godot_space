@@ -1,0 +1,96 @@
+[gd_scene load_steps=12 format=3 uid="uid://b7u1qnmhokl38"]
+
+[ext_resource type="Script" path="res://main2.gd" id="1_gy47x"]
+[ext_resource type="Texture2D" uid="uid://ccn3vhggcnvag" path="res://backgrounds/stars_small_1024.png" id="2_t1672"]
+[ext_resource type="Texture2D" uid="uid://j6bhjmw6a3oq" path="res://backgrounds/stars_big_1024.png" id="3_kkkh5"]
+[ext_resource type="Script" path="res://player2.gd" id="4_p2iv5"]
+[ext_resource type="Texture2D" uid="uid://hb3spkopvh2j" path="res://objects/particles_fireball_small/0003.png" id="5_os2a5"]
+[ext_resource type="Texture2D" uid="uid://b68sxev8xk2eu" path="res://ships/redfighter.png" id="6_crtc7"]
+[ext_resource type="AudioStream" uid="uid://cnumrleugycb8" path="res://audio/qubodup-crash.ogg" id="7_g215m"]
+[ext_resource type="Script" path="res://EnemySpawner2.gd" id="9_bblr0"]
+[ext_resource type="PackedScene" uid="uid://b8v3iq5pdafw8" path="res://hud.tscn" id="11_3wm8p"]
+[ext_resource type="PackedScene" uid="uid://dj2fowevev1gw" path="res://title_screen2.tscn" id="13_gwg3r"]
+[ext_resource type="PackedScene" uid="uid://bjfgb5482po8j" path="res://explosion.tscn" id="13_t3sn8"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_gy47x")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(15360, 15360)
+
+[node name="stars_small_1024" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(7680, 7680)
+scale = Vector2(15, 15)
+texture = ExtResource("2_t1672")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(15360, 15360)
+
+[node name="stars_big_1024" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(7680, 7680)
+scale = Vector2(15, 15)
+texture = ExtResource("3_kkkh5")
+
+[node name="bullets" type="Node2D" parent="."]
+
+[node name="player" type="Area2D" parent="."]
+light_mask = 3
+position = Vector2(942, 322)
+collision_mask = 2
+script = ExtResource("4_p2iv5")
+metadata/_edit_group_ = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="player"]
+position = Vector2(-79.843, 3.55701)
+rotation = 3.14159
+amount = 40
+lifetime = 0.07
+texture = ExtResource("5_os2a5")
+spread = 9.92
+gravity = Vector2(0, 0)
+initial_velocity_min = 0.33
+initial_velocity_max = 370.44
+angular_velocity_min = 1.0
+angular_velocity_max = 411.72
+color = Color(1, 0.333333, 0.333333, 1)
+
+[node name="redfighter" type="Sprite2D" parent="player"]
+position = Vector2(36.157, 1.55701)
+texture = ExtResource("6_crtc7")
+
+[node name="crash_sound" type="AudioStreamPlayer" parent="player"]
+stream = ExtResource("7_g215m")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="player"]
+position = Vector2(36.157, 1.55701)
+polygon = PackedVector2Array(-17.5, -164.4, -17.5, -162.4, 25.5, -122.4, 25.5, -106.5, 23.2, -106.5, -20.8, -68.5, -24.7, -68.5, -35.5, -71, -35.5, -65.5, -22.9, -65.5, -2.5, -52.6, -2.5, -51.5, 1.5, -48.5, 1.5, -44.5, 2, -42.5, 37.5, -56.4, 37.5, -53.7, 49, -47.5, 57.5, -48.9, 57.5, -47.1, 86.9, -40.5, 93.4, -40.5, 114.5, -41.6, 114.5, -39.7, 155.5, -18.7, 155.5, -17.3, 158.5, -14.3, 158.5, -4.5, 156, -4.5, 148.5, -1.5, 148.5, -4.2, 137.5, -8.89999, 137.5, -6.8, 141.3, 4.5, 138.9, 4.5, 137.6, 7.8, 150.1, 2.5, 156.1, 2.5, 159, 15.5, 156.7, 15.5, 154.7, 19.5, 152, 19.5, 113, 41.5, 95.4, 41.5, 88.5, 40.7, 56.7, 48.5, 49, 48.5, 36, 55.5, 33.1, 55.5, 2.5, 43.5, 2.5, 45.1, -3.5, 53.5, -5.89999, 53.5, -22.9, 65.5, -35.5, 65.5, -35.5, 70.4, -18.5, 69.4, -18.5, 71.6, 25.5, 107.6, 25.5, 123.5, 23.3, 123.5, -20.7, 165.5, -28.5, 165.5, -58.5, 166.5, -58.5, 164.6, -84.5, 149.7, -84.5, 143.8, -82.7, 141.5, -124.5, 142.5, -124.5, 141.2, -179.5, 132.2, -179.5, 130.5, -183.5, 127.5, -183.5, 112.5, -181.5, 112.5, -178.5, 108.5, -174.9, 108.5, -135.5, 100.8, -135.5, 100.1, -113.9, 91.5, -106.4, 91.5, -87.1, 94.2, -80.6, 87, -96.5, 65.5, -104.5, 65.5, -138.5, 64.5, -138.5, 62.4, -153.2, 49.5, -159.7, 49.5, -180.5, 46.2, -180.5, 44.6, -183.5, 42.6, -183.5, 37.5, -184.8, 28.5, -182, 28.5, -173.6, 24.3, -174.9, 17.5, -172.6, 17.5, -169.6, 12.5, -165.5, 12.5, -165.5, -12.5, -169.5, -12.5, -174.5, -18.8, -174.5, -24.3, -184.5, -30.4, -184.5, -37.7, -183.1, -43.5, -181.6, -43.5, -179.6, -46.5, -173.8, -46.5, -152.5, -50.2, -152.5, -51.4, -137.2, -64.5, -110.6, -64.5, -97.3, -65.4, -80.5, -88.7, -86.3, -94.5, -88.3, -94.5, -115.5, -91.2, -115.5, -93.1, -137.9, -101.5, -142.7, -101.5, -179.5, -108.9, -179.5, -110.5, -183.5, -113.5, -183.5, -128.5, -181.1, -128.5, -174.1, -133.5, -168.9, -133.5, -123.7, -142.5, -119.5, -142.5, -81.3, -141.6, -85.7, -150.5, -82, -150.5, -58.5, -164.6, -58.5, -166.6)
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(-1, 0)
+zoom = Vector2(0.2, 0.2)
+drag_left_margin = 0.0
+drag_top_margin = 0.0
+drag_right_margin = 0.0
+drag_bottom_margin = 0.0
+
+[node name="enemies" type="Node2D" parent="."]
+
+[node name="EnemySpawner2" type="Timer" parent="enemies"]
+autostart = true
+script = ExtResource("9_bblr0")
+
+[node name="HUD" parent="." instance=ExtResource("11_3wm8p")]
+
+[node name="Explosion" parent="." instance=ExtResource("13_t3sn8")]
+
+[node name="TitleScreen" parent="." instance=ExtResource("13_gwg3r")]
+
+[connection signal="area_entered" from="player" to="player" method="_on_player_area_entered"]
+[connection signal="dead" from="player" to="." method="_on_player_dead"]
+[connection signal="win" from="player" to="." method="_on_player_win"]
+[connection signal="timeout" from="enemies/EnemySpawner2" to="enemies/EnemySpawner2" method="_on_enemy_spawner_timeout"]
+[connection signal="start_game" from="TitleScreen" to="." method="_on_title_screen_start_game"]
+[connection signal="start_game" from="TitleScreen" to="enemies/EnemySpawner2" method="_on_title_screen_start_game"]
