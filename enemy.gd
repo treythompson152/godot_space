@@ -21,7 +21,8 @@ func _process(delta):
 		queue_free()
 	
 	if randf()<FIRE_RATE:
-		Bullet.instantiate().init(self, 3000)
+		var shoot_bullet = Bullet.instantiate().init(self, 3000)
+		add_child(shoot_bullet)
 
 
 func _on_enemy_area_entered(area):

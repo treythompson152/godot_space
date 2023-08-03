@@ -11,7 +11,7 @@ var is_spawner_active = false
 func _on_enemy_spawner_timeout():
 	if is_spawner_active && get_child_count() < MAX_ENEMIES && player.score <= MAX_SCORE && player.score >= MIN_SCORE:
 		var enemy = Enemy.instantiate()
-		add_child(enemy)
+		self.add_child(enemy)
 		
 
 func _on_title_screen_start_game():
