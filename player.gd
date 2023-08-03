@@ -2,6 +2,8 @@ extends Area2D
 
 signal dead
 signal win
+signal level_complete
+signal hide_enemies
 
 @export var velocity = 2000
 @export var turning = 4.0
@@ -18,11 +20,14 @@ func _process(delta):
 		rotation += turning * delta
 	if Input.is_action_just_pressed("fire"):
 		Bullet.instantiate().init(self, 4000)
-
+ 
 	gamepad(delta)
 	position += Vector2.RIGHT.rotated(rotation) * velocity * delta
 	if score == 1:
-		await get_tree().create_timer(2.0).timeout
+		hide_enemies.emit()
+		level_complete.emit()
+		velocity = 0
+		await get_tree().create_timer(3.0).timeout
 		get_tree().reload_current_scene()
 		win.emit()
 func gamepad(delta):

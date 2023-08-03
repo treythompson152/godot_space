@@ -90,6 +90,7 @@ script = ExtResource("9_bblr0")
 
 [connection signal="area_entered" from="player" to="player" method="_on_player_area_entered"]
 [connection signal="dead" from="player" to="." method="_on_player_dead"]
+[connection signal="level_complete" from="player" to="TitleScreen" method="_on_player_level_complete"]
 [connection signal="win" from="player" to="." method="_on_player_win"]
 [connection signal="timeout" from="enemies/EnemySpawner2" to="enemies/EnemySpawner2" method="_on_enemy_spawner_timeout"]
 [connection signal="start_game" from="TitleScreen" to="." method="_on_title_screen_start_game"]

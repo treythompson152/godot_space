@@ -13,6 +13,5 @@ func _on_enemy_spawner_timeout():
 		var enemy = Enemy.instantiate()
 		add_child(enemy)
 
-
 func _on_title_screen_start_game():
 	is_spawner_active = true

@@ -38,7 +38,6 @@ _data = {
 }
 
 [node name="enemy" type="Area2D"]
-modulate = Color(1, 1, 1, 0.4)
 position = Vector2(0.801025, -0.809296)
 collision_layer = 2
 script = ExtResource("1_0byes")

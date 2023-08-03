@@ -2,6 +2,7 @@ extends Area2D
 
 signal dead
 signal win
+signal level_complete
 
 @export var velocity = 2000
 @export var turning = 4.0
@@ -21,9 +22,12 @@ func _process(delta):
 
 	gamepad(delta)
 	position += Vector2.RIGHT.rotated(rotation) * velocity * delta
-	#if score == 5:
-	#	get_tree().reload_current_scene()
-	#	win.emit()
+	if score == 1:
+		level_complete.emit()
+		velocity = 0
+		await get_tree().create_timer(3.0).timeout
+		win.emit()
+	
 func gamepad(delta):
 	pass
 

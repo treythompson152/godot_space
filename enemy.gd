@@ -36,3 +36,4 @@ func _on_enemy_area_entered(area):
 	get_node("/root/main/HUD/score").text = str(player.score)
 	await get_tree().create_timer(0.5).timeout
 	queue_free()
+	

@@ -27,18 +27,7 @@ theme_override_colors/font_color = Color(0.745098, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_oeu83")
 theme_override_font_sizes/font_size = 42
 shortcut = SubResource("Shortcut_b8vtw")
-text = "Blast Off!"
-
-[node name="Title" type="Label" parent="."]
-offset_top = 112.0
-offset_right = 1280.0
-offset_bottom = 208.0
-theme_override_fonts/font = ExtResource("3_r6f6t")
-theme_override_font_sizes/font_size = 80
-text = "Stellar Outcast:2
-"
-horizontal_alignment = 1
-autowrap_mode = 2
+text = "Next Level"
 
 [node name="Subtitle" type="Label" parent="."]
 offset_top = 200.0
@@ -46,8 +35,12 @@ offset_right = 1280.0
 offset_bottom = 296.0
 theme_override_fonts/font = ExtResource("3_r6f6t")
 theme_override_font_sizes/font_size = 60
-text = "Eternal Intruders"
+text = "Press Enter when Ready"
 horizontal_alignment = 1
 autowrap_mode = 2
 
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 3.0
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
