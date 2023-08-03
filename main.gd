@@ -2,8 +2,10 @@ extends Node2D
 
 	
 func _on_player_dead():
-	$TitleScreen.show_game_over()
+	$TitleScreen.show_message("Game Over")
+	await get_tree().create_timer(2.0).timeout
 	# stop spawning ememies
+	get_tree().reload_current_scene()
 
 
 func _on_title_screen_start_game():

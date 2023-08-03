@@ -1,21 +1,24 @@
-[gd_scene load_steps=14 format=3 uid="uid://dkn6il5jne18b"]
+[gd_scene load_steps=17 format=3 uid="uid://de8lwv2a3rtuw"]
 
-[ext_resource type="Texture2D" uid="uid://ccn3vhggcnvag" path="res://backgrounds/stars_small_1024.png" id="1"]
-[ext_resource type="Script" path="res://main.gd" id="1_b4qfr"]
-[ext_resource type="Script" path="res://player.gd" id="2"]
-[ext_resource type="Texture2D" uid="uid://j6bhjmw6a3oq" path="res://backgrounds/stars_big_1024.png" id="2_b1bqs"]
-[ext_resource type="Texture2D" uid="uid://b68sxev8xk2eu" path="res://ships/redfighter.png" id="4"]
-[ext_resource type="Texture2D" uid="uid://hb3spkopvh2j" path="res://objects/particles_fireball_small/0003.png" id="4_8hr1i"]
-[ext_resource type="AudioStream" uid="uid://cnumrleugycb8" path="res://audio/qubodup-crash.ogg" id="6"]
-[ext_resource type="PackedScene" uid="uid://b8v3iq5pdafw8" path="res://hud.tscn" id="7_psy34"]
-[ext_resource type="Script" path="res://EnemySpawner.gd" id="7_r0y12"]
-[ext_resource type="PackedScene" uid="uid://dmqfh0ce1byeu" path="res://laser.tscn" id="8_wiwb4"]
-[ext_resource type="Script" path="res://laser.gd" id="9_5naqy"]
-[ext_resource type="PackedScene" uid="uid://nerbd4aiw0se" path="res://title_screen.tscn" id="11_tr7fe"]
-[ext_resource type="PackedScene" uid="uid://bjfgb5482po8j" path="res://explosion.tscn" id="13_vem6b"]
+[ext_resource type="Script" path="res://main3.gd" id="1_qaoha"]
+[ext_resource type="Texture2D" uid="uid://ccn3vhggcnvag" path="res://backgrounds/stars_small_1024.png" id="2_c176a"]
+[ext_resource type="Texture2D" uid="uid://j6bhjmw6a3oq" path="res://backgrounds/stars_big_1024.png" id="3_1wf53"]
+[ext_resource type="Script" path="res://player3.gd" id="4_kjjoc"]
+[ext_resource type="Texture2D" uid="uid://hb3spkopvh2j" path="res://objects/particles_fireball_small/0003.png" id="5_jfeq0"]
+[ext_resource type="Texture2D" uid="uid://b68sxev8xk2eu" path="res://ships/redfighter.png" id="6_ik2p0"]
+[ext_resource type="AudioStream" uid="uid://cnumrleugycb8" path="res://audio/qubodup-crash.ogg" id="7_b4g8f"]
+[ext_resource type="PackedScene" uid="uid://dmqfh0ce1byeu" path="res://laser.tscn" id="8_wgqq7"]
+[ext_resource type="Script" path="res://laser.gd" id="9_mkoi0"]
+[ext_resource type="Script" path="res://EnemySpawner2.gd" id="10_pd6sr"]
+[ext_resource type="Script" path="res://EnemySpawner3.gd" id="11_gsfql"]
+[ext_resource type="Script" path="res://EnemySpawner.gd" id="11_guh7d"]
+[ext_resource type="PackedScene" uid="uid://b8v3iq5pdafw8" path="res://hud.tscn" id="12_i2v3s"]
+[ext_resource type="PackedScene" uid="uid://bjfgb5482po8j" path="res://explosion.tscn" id="13_brken"]
+[ext_resource type="PackedScene" uid="uid://dj2fowevev1gw" path="res://title_screen2.tscn" id="14_hujqe"]
+[ext_resource type="Script" path="res://title_screen3.gd" id="16_xdloq"]
 
 [node name="main" type="Node2D"]
-script = ExtResource("1_b4qfr")
+script = ExtResource("1_qaoha")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -26,7 +29,7 @@ motion_mirroring = Vector2(15360, 15360)
 [node name="stars_small_1024" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(7680, 7680)
 scale = Vector2(15, 15)
-texture = ExtResource("1")
+texture = ExtResource("2_c176a")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2(15360, 15360)
@@ -34,7 +37,7 @@ motion_mirroring = Vector2(15360, 15360)
 [node name="stars_big_1024" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 position = Vector2(7680, 7680)
 scale = Vector2(15, 15)
-texture = ExtResource("2_b1bqs")
+texture = ExtResource("3_1wf53")
 
 [node name="bullets" type="Node2D" parent="."]
 
@@ -42,7 +45,7 @@ texture = ExtResource("2_b1bqs")
 light_mask = 3
 position = Vector2(942, 322)
 collision_mask = 2
-script = ExtResource("2")
+script = ExtResource("4_kjjoc")
 metadata/_edit_group_ = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="player"]
@@ -50,7 +53,7 @@ position = Vector2(-79.843, 3.55701)
 rotation = 3.14159
 amount = 40
 lifetime = 0.07
-texture = ExtResource("4_8hr1i")
+texture = ExtResource("5_jfeq0")
 spread = 9.92
 gravity = Vector2(0, 0)
 initial_velocity_min = 0.33
@@ -61,10 +64,10 @@ color = Color(1, 0.333333, 0.333333, 1)
 
 [node name="redfighter" type="Sprite2D" parent="player"]
 position = Vector2(36.157, 1.55701)
-texture = ExtResource("4")
+texture = ExtResource("6_ik2p0")
 
 [node name="crash_sound" type="AudioStreamPlayer" parent="player"]
-stream = ExtResource("6")
+stream = ExtResource("7_b4g8f")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="player"]
 position = Vector2(36.157, 1.55701)
@@ -78,26 +81,41 @@ drag_top_margin = 0.0
 drag_right_margin = 0.0
 drag_bottom_margin = 0.0
 
-[node name="laser" parent="player" instance=ExtResource("8_wiwb4")]
-script = ExtResource("9_5naqy")
+[node name="laser" parent="player" instance=ExtResource("8_wgqq7")]
+script = ExtResource("9_mkoi0")
 
 [node name="enemies" type="Node2D" parent="."]
 
+[node name="EnemySpawner2" type="Timer" parent="enemies"]
+autostart = true
+script = ExtResource("10_pd6sr")
+
 [node name="EnemySpawner" type="Timer" parent="enemies"]
 autostart = true
-script = ExtResource("7_r0y12")
+script = ExtResource("11_guh7d")
 
-[node name="HUD" parent="." instance=ExtResource("7_psy34")]
+[node name="EnemySpawner3" type="Timer" parent="enemies"]
+autostart = true
+script = ExtResource("11_gsfql")
 
-[node name="TitleScreen" parent="." instance=ExtResource("11_tr7fe")]
+[node name="HUD" parent="." instance=ExtResource("12_i2v3s")]
 
-[node name="Explosion" parent="." instance=ExtResource("13_vem6b")]
+[node name="Explosion" parent="." instance=ExtResource("13_brken")]
+
+[node name="TitleScreen" parent="." instance=ExtResource("14_hujqe")]
+script = ExtResource("16_xdloq")
 
 [connection signal="area_entered" from="player" to="player" method="_on_player_area_entered"]
 [connection signal="dead" from="player" to="." method="_on_player_dead"]
+[connection signal="hide_enemies" from="player" to="enemies/EnemySpawner2" method="_on_player_hide_enemies"]
 [connection signal="hide_enemies" from="player" to="enemies/EnemySpawner" method="_on_player_hide_enemies"]
-[connection signal="level_complete" from="player" to="TitleScreen" method="_on_player_level_complete"]
+[connection signal="hide_enemies" from="player" to="enemies/EnemySpawner3" method="_on_player_hide_enemies"]
+[connection signal="level_complete" from="player" to="TitleScreen" method="_on_player_level_complete" flags=6]
 [connection signal="win" from="player" to="." method="_on_player_win"]
+[connection signal="timeout" from="enemies/EnemySpawner2" to="enemies/EnemySpawner2" method="_on_enemy_spawner_timeout"]
 [connection signal="timeout" from="enemies/EnemySpawner" to="enemies/EnemySpawner" method="_on_enemy_spawner_timeout"]
+[connection signal="timeout" from="enemies/EnemySpawner3" to="enemies/EnemySpawner3" method="_on_enemy_spawner_timeout"]
 [connection signal="start_game" from="TitleScreen" to="." method="_on_title_screen_start_game"]
+[connection signal="start_game" from="TitleScreen" to="enemies/EnemySpawner2" method="_on_title_screen_start_game"]
 [connection signal="start_game" from="TitleScreen" to="enemies/EnemySpawner" method="_on_title_screen_start_game"]
+[connection signal="start_game" from="TitleScreen" to="enemies/EnemySpawner3" method="_on_title_screen_start_game"]

@@ -15,3 +15,10 @@ func _on_enemy_spawner_timeout():
 
 func _on_title_screen_start_game():
 	is_spawner_active = true
+
+func hide_all_enemies():
+	for enemy in get_children():
+		enemy.queue_free()
+
+func _on_player_hide_enemies():
+	hide_all_enemies()

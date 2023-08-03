@@ -10,9 +10,8 @@ func show_message(text):
 
 func _on_start_button_pressed():
 	$StartButton.hide()
-	$Title.hide()
 	$Subtitle.hide()
-	show_message("Level 1 - Goal: 5 points")
+	show_message("Level 3 - Goal: 20 points")
 	await $MessageTimer.timeout
 	start_game.emit()
 	
@@ -21,5 +20,5 @@ func _on_message_timer_timeout():
 	$Subtitle.hide()
 
 func _on_player_level_complete():
-	show_message("Level 1 Complete!")
+	show_message("Level 3 Complete!")
 	await $MessageTimer.timeout

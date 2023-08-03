@@ -14,4 +14,6 @@ func _on_title_screen_start_game():
 	pass
 
 func _on_player_win():
-	get_tree().change_scene_to_file("res://main3.tscn")
+	$TitleScreen.show_message("Congrats! You Win All Levels!")
+	await get_tree().create_timer(3.0).timeout
+	get_tree().change_scene_to_file("res://main.tscn")
