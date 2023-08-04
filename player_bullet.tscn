@@ -9,7 +9,7 @@ height = 116.0
 
 [sub_resource type="AudioStreamRandomizer" id="2"]
 
-[node name="bullet" type="Area2D"]
+[node name="bullet" type="Area2D" groups=["player_bullets"]]
 collision_mask = 2
 script = ExtResource("1")
 

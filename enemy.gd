@@ -21,20 +21,19 @@ func _process(delta):
 		queue_free()
 	
 	if randf()<FIRE_RATE:
-		var shoot_bullet = Bullet.instantiate().init(self, 3000)
-		add_child(shoot_bullet)
-
+		Bullet.instantiate().init(self, 3000, false)
 
 func _on_enemy_area_entered(area):
-	var explosion_instance = Explosion.instantiate()
-	get_parent().add_child(explosion_instance)
-	explosion_instance.position = position
-	explosion_instance.get_node("AnimatedSprite2D").play()
-	$explosion.play()
-	$AnimationPlayer.play("fade")
-	#$CollisionPolygon2D.queue_free()
-	player.score += 1
-	get_node("/root/main/HUD/score").text = str(player.score)
-	await get_tree().create_timer(0.5).timeout
-	queue_free()
+	var player_bullets = get_tree().get_nodes_in_group("player_bullets")
+	if area in player_bullets:
+		var explosion_instance = Explosion.instantiate() 
+		get_parent().add_child(explosion_instance)
+		explosion_instance.position = position
+		explosion_instance.get_node("AnimatedSprite2D").play()
+		$explosion.play()
+		$AnimationPlayer.play("fade")
+		player.score += 1
+		get_node("/root/main/HUD/score").text = str(player.score)
+		await get_tree().create_timer(0.5).timeout
+		queue_free()
 	

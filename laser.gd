@@ -22,3 +22,4 @@ func _process(delta):
 			monitorable = false
 	charge = clamp(charge, 0.0, 3.0)
 	get_node("/root/main/HUD/charge").value = charge
+	add_to_group("player_bullets")

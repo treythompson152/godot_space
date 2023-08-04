@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://de8lwv2a3rtuw"]
+[gd_scene load_steps=19 format=3 uid="uid://de8lwv2a3rtuw"]
 
 [ext_resource type="Script" path="res://main3.gd" id="1_qaoha"]
 [ext_resource type="Texture2D" uid="uid://ccn3vhggcnvag" path="res://backgrounds/stars_small_1024.png" id="2_c176a"]
@@ -16,6 +16,26 @@
 [ext_resource type="PackedScene" uid="uid://bjfgb5482po8j" path="res://explosion.tscn" id="13_brken"]
 [ext_resource type="PackedScene" uid="uid://dj2fowevev1gw" path="res://title_screen2.tscn" id="14_hujqe"]
 [ext_resource type="Script" path="res://title_screen3.gd" id="16_xdloq"]
+
+[sub_resource type="Animation" id="1"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_42o2e"]
+_data = {
+"fade": SubResource("1")
+}
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_qaoha")
@@ -83,6 +103,11 @@ drag_bottom_margin = 0.0
 
 [node name="laser" parent="player" instance=ExtResource("8_wgqq7")]
 script = ExtResource("9_mkoi0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="player"]
+libraries = {
+"": SubResource("AnimationLibrary_42o2e")
+}
 
 [node name="enemies" type="Node2D" parent="."]
 
