@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://main2.gd" id="1_gy47x"]
 [ext_resource type="Texture2D" uid="uid://ccn3vhggcnvag" path="res://backgrounds/stars_small_1024.png" id="2_t1672"]
 [ext_resource type="Texture2D" uid="uid://j6bhjmw6a3oq" path="res://backgrounds/stars_big_1024.png" id="3_kkkh5"]
-[ext_resource type="Script" path="res://player2.gd" id="4_p2iv5"]
+[ext_resource type="Script" path="res://player.gd" id="4_2os08"]
 [ext_resource type="Texture2D" uid="uid://hb3spkopvh2j" path="res://objects/particles_fireball_small/0003.png" id="5_os2a5"]
 [ext_resource type="Texture2D" uid="uid://b68sxev8xk2eu" path="res://ships/redfighter.png" id="6_crtc7"]
 [ext_resource type="AudioStream" uid="uid://cnumrleugycb8" path="res://audio/qubodup-crash.ogg" id="7_g215m"]
@@ -63,7 +63,7 @@ texture = ExtResource("3_kkkh5")
 light_mask = 3
 position = Vector2(942, 322)
 collision_mask = 2
-script = ExtResource("4_p2iv5")
+script = ExtResource("4_2os08")
 metadata/_edit_group_ = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="player"]
@@ -123,6 +123,7 @@ script = ExtResource("9_gwxi2")
 
 [node name="TitleScreen" parent="." instance=ExtResource("13_gwg3r")]
 
+[connection signal="loading_screen" from="." to="player" method="_on_main_loading_screen"]
 [connection signal="area_entered" from="player" to="player" method="_on_player_area_entered"]
 [connection signal="dead" from="player" to="." method="_on_player_dead"]
 [connection signal="hide_enemies" from="player" to="enemies/EnemySpawner2" method="_on_player_hide_enemies"]

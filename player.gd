@@ -5,6 +5,7 @@ signal win
 signal level_complete
 signal hide_enemies
 
+var loading_screen = false
 @export var velocity = 2000
 @export var turning = 4.0
 @export var health = 10
@@ -36,17 +37,22 @@ func gamepad(delta):
 	pass
 
 func _on_player_area_entered(area):
-	health -= 1
-	get_node("../HUD/health").value = health
-	if health <= 0:
-		hide_enemies.emit()
-		var explosion_instance = Explosion.instantiate()
-		get_parent().add_child(explosion_instance)
-		explosion_instance.position = position
-		explosion_instance.get_node("AnimatedSprite2D").play()
-		$AnimationPlayer.play("fade")
-		velocity = 0
-		dead.emit()
-	$crash_sound.play()
-	await get_tree().create_timer(1.0).timeout
+	if(!loading_screen):
+		health -= 1
+		get_node("../HUD/health").value = health
+		if health <= 0:
+			hide_enemies.emit()
+			var explosion_instance = Explosion.instantiate()
+			get_parent().add_child(explosion_instance)
+			explosion_instance.position = position
+			explosion_instance.get_node("AnimatedSprite2D").play()
+			$AnimationPlayer.play("fade")
+			velocity = 0
+			dead.emit()
+		$crash_sound.play()
+		await get_tree().create_timer(1.0).timeout
 	
+
+
+func _on_main_loading_screen():
+	loading_screen = true

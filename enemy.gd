@@ -21,7 +21,8 @@ func _process(delta):
 		queue_free()
 	
 	if randf()<FIRE_RATE:
-		Bullet.instantiate().init(self, 3000, false)
+		if position.distance_to(player.position) < 3000:
+			Bullet.instantiate().init(self, 3000, false)
 
 func _on_enemy_area_entered(area):
 	var player_bullets = get_tree().get_nodes_in_group("player_bullets")
