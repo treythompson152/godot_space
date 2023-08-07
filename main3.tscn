@@ -1,15 +1,17 @@
-[gd_scene load_steps=19 format=3 uid="uid://de8lwv2a3rtuw"]
+[gd_scene load_steps=21 format=3 uid="uid://de8lwv2a3rtuw"]
 
 [ext_resource type="Script" path="res://main3.gd" id="1_qaoha"]
 [ext_resource type="Texture2D" uid="uid://ccn3vhggcnvag" path="res://backgrounds/stars_small_1024.png" id="2_c176a"]
 [ext_resource type="Texture2D" uid="uid://j6bhjmw6a3oq" path="res://backgrounds/stars_big_1024.png" id="3_1wf53"]
-[ext_resource type="Script" path="res://player.gd" id="4_rikac"]
+[ext_resource type="Script" path="res://player3.gd" id="4_6cxgu"]
 [ext_resource type="Texture2D" uid="uid://hb3spkopvh2j" path="res://objects/particles_fireball_small/0003.png" id="5_jfeq0"]
 [ext_resource type="Texture2D" uid="uid://b68sxev8xk2eu" path="res://ships/redfighter.png" id="6_ik2p0"]
 [ext_resource type="AudioStream" uid="uid://cnumrleugycb8" path="res://audio/qubodup-crash.ogg" id="7_b4g8f"]
 [ext_resource type="PackedScene" uid="uid://dmqfh0ce1byeu" path="res://laser.tscn" id="8_wgqq7"]
 [ext_resource type="Script" path="res://laser.gd" id="9_mkoi0"]
 [ext_resource type="Script" path="res://EnemySpawner5.gd" id="10_82s70"]
+[ext_resource type="AudioStream" uid="uid://cmo38wm84gqxb" path="res://audio/digital_sfx/source/laser7.ogg" id="10_c84cv"]
+[ext_resource type="AudioStream" uid="uid://weyteacc0hac" path="res://audio/digital_sfx/source/zap2.ogg" id="10_yu6tb"]
 [ext_resource type="Script" path="res://EnemySpawner3.gd" id="11_gsfql"]
 [ext_resource type="Script" path="res://EnemySpawner4.gd" id="11_k5rxk"]
 [ext_resource type="PackedScene" uid="uid://b8v3iq5pdafw8" path="res://hud.tscn" id="12_i2v3s"]
@@ -65,7 +67,7 @@ texture = ExtResource("3_1wf53")
 light_mask = 3
 position = Vector2(942, 322)
 collision_mask = 2
-script = ExtResource("4_rikac")
+script = ExtResource("4_6cxgu")
 metadata/_edit_group_ = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="player"]
@@ -104,10 +106,18 @@ drag_bottom_margin = 0.0
 [node name="laser" parent="player" instance=ExtResource("8_wgqq7")]
 script = ExtResource("9_mkoi0")
 
+[node name="lazersfx" type="AudioStreamPlayer" parent="player/laser"]
+stream = ExtResource("10_yu6tb")
+volume_db = -20.0
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="player"]
 libraries = {
 "": SubResource("AnimationLibrary_42o2e")
 }
+
+[node name="pew" type="AudioStreamPlayer" parent="player"]
+stream = ExtResource("10_c84cv")
+volume_db = -20.0
 
 [node name="enemies" type="Node2D" parent="."]
 

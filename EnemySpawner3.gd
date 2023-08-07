@@ -1,7 +1,7 @@
 extends Timer
 
 var Enemy = preload("res://enemy3.tscn")
-@export var MAX_ENEMIES = 5
+@export var MAX_ENEMIES = 10
 @export var MAX_SCORE = 500
 @export var MIN_SCORE = 0
 @onready var player = get_node("/root/main/player")

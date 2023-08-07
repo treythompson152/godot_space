@@ -16,6 +16,7 @@ func _process(delta):
 		charge -= delta
 		if charge > 0.3:
 			show()
+			$lazersfx.play()
 			monitorable = true
 		else:
 			hide()
@@ -23,3 +24,7 @@ func _process(delta):
 	charge = clamp(charge, 0.0, 3.0)
 	get_node("/root/main/HUD/charge").value = charge
 	add_to_group("player_bullets")
+	
+
+	
+	

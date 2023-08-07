@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dkn6il5jne18b"]
+[gd_scene load_steps=18 format=3 uid="uid://dkn6il5jne18b"]
 
 [ext_resource type="Texture2D" uid="uid://ccn3vhggcnvag" path="res://backgrounds/stars_small_1024.png" id="1"]
 [ext_resource type="Script" path="res://main.gd" id="1_b4qfr"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" path="res://EnemySpawner.gd" id="7_r0y12"]
 [ext_resource type="PackedScene" uid="uid://dmqfh0ce1byeu" path="res://laser.tscn" id="8_wiwb4"]
 [ext_resource type="Script" path="res://laser.gd" id="9_5naqy"]
+[ext_resource type="AudioStream" uid="uid://weyteacc0hac" path="res://audio/digital_sfx/source/zap2.ogg" id="10_d1syp"]
+[ext_resource type="AudioStream" uid="uid://cmo38wm84gqxb" path="res://audio/digital_sfx/source/laser7.ogg" id="10_tgbnn"]
 [ext_resource type="PackedScene" uid="uid://nerbd4aiw0se" path="res://title_screen.tscn" id="11_tr7fe"]
 [ext_resource type="PackedScene" uid="uid://bjfgb5482po8j" path="res://explosion.tscn" id="13_vem6b"]
 
@@ -101,12 +103,20 @@ drag_bottom_margin = 0.0
 [node name="laser" parent="player" instance=ExtResource("8_wiwb4")]
 script = ExtResource("9_5naqy")
 
+[node name="lazersfx" type="AudioStreamPlayer" parent="player/laser"]
+stream = ExtResource("10_d1syp")
+volume_db = -20.0
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="player"]
 libraries = {
 "": SubResource("AnimationLibrary_42o2e")
 }
 
-[node name="enemies" type="Node2D" parent="."]
+[node name="pew" type="AudioStreamPlayer" parent="player"]
+stream = ExtResource("10_tgbnn")
+volume_db = -20.0
+
+[node name="enemies" type="Node2D" parent="." groups=["destroyed_enemies"]]
 
 [node name="EnemySpawner" type="Timer" parent="enemies"]
 autostart = true
