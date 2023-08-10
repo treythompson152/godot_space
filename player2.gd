@@ -10,6 +10,8 @@ signal hide_enemies
 @export var health = 10
 
 var loading_screen = false
+var hide_enemies_flag = false
+var counter = 1
 var Bullet = preload("res://player_bullet.tscn")
 var Explosion = preload("res://explosion.tscn")
 @export var score = 0
@@ -25,13 +27,22 @@ func _process(delta):
 
 	gamepad(delta)
 	position += Vector2.RIGHT.rotated(rotation) * velocity * delta
-	if score >= 10:
+	if (score >= 10 and counter == 1):
+		counter -= 1 
 		await get_tree().create_timer(1.0).timeout
 		hide_enemies.emit()
+		hide_enemies_flag = true
 		level_complete.emit()
+		$Congrats.play()
+		await get_tree().create_timer(2.0).timeout
+		$MissionCompleted.play()
 		velocity = 0
 		await get_tree().create_timer(3.0).timeout
 		win.emit()
+		
+		
+	if hide_enemies_flag:
+		hide_enemies.emit()
 	
 func gamepad(delta):
 	pass
@@ -50,6 +61,9 @@ func _on_player_area_entered(area):
 				explosion_instance.get_node("AnimatedSprite2D").play()
 				$AnimationPlayer.play("fade")
 				velocity = 0
+				$explosion.play()
+				await get_tree().create_timer(1.0).timeout
+				$GameOver.play()
 				dead.emit()
 			$crash_sound.play()
 			await get_tree().create_timer(1.0).timeout

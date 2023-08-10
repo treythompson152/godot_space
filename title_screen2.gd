@@ -9,6 +9,7 @@ func show_message(text):
 	
 
 func _on_start_button_pressed():
+	$Click.play()
 	$StartButton.hide()
 	$Subtitle.hide()
 	show_message("Level 2 - Goal: 10 points")

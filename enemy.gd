@@ -1,5 +1,6 @@
 extends Area2D
 
+
 @export var VELOCITY = 1000.0
 @export var TURNING = 2.0
 @export var FIRE_RATE = 0.01

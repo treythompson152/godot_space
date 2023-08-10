@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b7u1qnmhokl38"]
+[gd_scene load_steps=23 format=3 uid="uid://b7u1qnmhokl38"]
 
 [ext_resource type="Script" path="res://main2.gd" id="1_gy47x"]
 [ext_resource type="Texture2D" uid="uid://ccn3vhggcnvag" path="res://backgrounds/stars_small_1024.png" id="2_t1672"]
@@ -16,6 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://b8v3iq5pdafw8" path="res://hud.tscn" id="11_3wm8p"]
 [ext_resource type="PackedScene" uid="uid://dj2fowevev1gw" path="res://title_screen2.tscn" id="13_gwg3r"]
 [ext_resource type="PackedScene" uid="uid://bjfgb5482po8j" path="res://explosion.tscn" id="13_t3sn8"]
+[ext_resource type="AudioStream" uid="uid://b1llrwwpjudhh" path="res://audio/voiceover_male/source/game_over.ogg" id="14_glehv"]
+[ext_resource type="AudioStream" uid="uid://ksnxjha6mcr0" path="res://audio/explosion.wav" id="15_rf5x8"]
+[ext_resource type="AudioStream" uid="uid://dlxurikrujma8" path="res://audio/voiceover_male/source/congratulations.ogg" id="17_qbjqa"]
+[ext_resource type="AudioStream" uid="uid://dueswjnhayu61" path="res://audio/voiceover_male/source/mission_completed.ogg" id="18_fxwwv"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "fade"
@@ -117,6 +121,18 @@ libraries = {
 stream = ExtResource("10_2t4jj")
 volume_db = -20.0
 
+[node name="Congrats" type="AudioStreamPlayer" parent="player"]
+stream = ExtResource("17_qbjqa")
+
+[node name="MissionCompleted" type="AudioStreamPlayer" parent="player"]
+stream = ExtResource("18_fxwwv")
+
+[node name="GameOver" type="AudioStreamPlayer" parent="player"]
+stream = ExtResource("14_glehv")
+
+[node name="explosion" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource("15_rf5x8")
+
 [node name="enemies" type="Node2D" parent="."]
 
 [node name="EnemySpawner2" type="Timer" parent="enemies"]
@@ -132,6 +148,12 @@ script = ExtResource("9_gwxi2")
 [node name="Explosion" parent="." instance=ExtResource("13_t3sn8")]
 
 [node name="TitleScreen" parent="." instance=ExtResource("13_gwg3r")]
+
+[node name="Congrats" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_qbjqa")
+
+[node name="MissionCompleted" type="AudioStreamPlayer" parent="Congrats"]
+stream = ExtResource("18_fxwwv")
 
 [connection signal="loading_screen" from="." to="player" method="_on_main_loading_screen"]
 [connection signal="area_entered" from="player" to="player" method="_on_player_area_entered"]

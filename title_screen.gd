@@ -9,6 +9,7 @@ func show_message(text):
 	
 
 func _on_start_button_pressed():
+	$Click.play()
 	$StartButton.hide()
 	$Title.hide()
 	$Subtitle.hide()

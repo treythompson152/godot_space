@@ -16,7 +16,6 @@ func _process(delta):
 		charge -= delta
 		if charge > 0.3:
 			show()
-			$lazersfx.play()
 			monitorable = true
 		else:
 			hide()

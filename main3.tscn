@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://de8lwv2a3rtuw"]
+[gd_scene load_steps=26 format=3 uid="uid://de8lwv2a3rtuw"]
 
 [ext_resource type="Script" path="res://main3.gd" id="1_qaoha"]
 [ext_resource type="Texture2D" uid="uid://ccn3vhggcnvag" path="res://backgrounds/stars_small_1024.png" id="2_c176a"]
@@ -17,7 +17,12 @@
 [ext_resource type="PackedScene" uid="uid://b8v3iq5pdafw8" path="res://hud.tscn" id="12_i2v3s"]
 [ext_resource type="PackedScene" uid="uid://bjfgb5482po8j" path="res://explosion.tscn" id="13_brken"]
 [ext_resource type="PackedScene" uid="uid://dj2fowevev1gw" path="res://title_screen2.tscn" id="14_hujqe"]
+[ext_resource type="AudioStream" uid="uid://b1llrwwpjudhh" path="res://audio/voiceover_male/source/game_over.ogg" id="15_s8t71"]
+[ext_resource type="AudioStream" uid="uid://ksnxjha6mcr0" path="res://audio/explosion.wav" id="16_whc1i"]
 [ext_resource type="Script" path="res://title_screen3.gd" id="16_xdloq"]
+[ext_resource type="AudioStream" uid="uid://dlxurikrujma8" path="res://audio/voiceover_male/source/congratulations.ogg" id="20_eidk1"]
+[ext_resource type="AudioStream" uid="uid://dueswjnhayu61" path="res://audio/voiceover_male/source/mission_completed.ogg" id="21_7vm6d"]
+[ext_resource type="AudioStream" uid="uid://dmje2p54xvraa" path="res://audio/voiceover_male/source/you_win.ogg" id="22_ftob5"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "fade"
@@ -118,6 +123,21 @@ libraries = {
 [node name="pew" type="AudioStreamPlayer" parent="player"]
 stream = ExtResource("10_c84cv")
 volume_db = -20.0
+
+[node name="Congrats" type="AudioStreamPlayer" parent="player"]
+stream = ExtResource("20_eidk1")
+
+[node name="MissionCompleted" type="AudioStreamPlayer" parent="player"]
+stream = ExtResource("21_7vm6d")
+
+[node name="YouWin" type="AudioStreamPlayer" parent="player"]
+stream = ExtResource("22_ftob5")
+
+[node name="GameOver" type="AudioStreamPlayer" parent="player"]
+stream = ExtResource("15_s8t71")
+
+[node name="explosion" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource("16_whc1i")
 
 [node name="enemies" type="Node2D" parent="."]
 

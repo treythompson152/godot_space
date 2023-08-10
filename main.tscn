@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dkn6il5jne18b"]
+[gd_scene load_steps=22 format=3 uid="uid://dkn6il5jne18b"]
 
 [ext_resource type="Texture2D" uid="uid://ccn3vhggcnvag" path="res://backgrounds/stars_small_1024.png" id="1"]
 [ext_resource type="Script" path="res://main.gd" id="1_b4qfr"]
@@ -14,7 +14,11 @@
 [ext_resource type="AudioStream" uid="uid://weyteacc0hac" path="res://audio/digital_sfx/source/zap2.ogg" id="10_d1syp"]
 [ext_resource type="AudioStream" uid="uid://cmo38wm84gqxb" path="res://audio/digital_sfx/source/laser7.ogg" id="10_tgbnn"]
 [ext_resource type="PackedScene" uid="uid://nerbd4aiw0se" path="res://title_screen.tscn" id="11_tr7fe"]
+[ext_resource type="AudioStream" uid="uid://ksnxjha6mcr0" path="res://audio/explosion.wav" id="12_oeh33"]
 [ext_resource type="PackedScene" uid="uid://bjfgb5482po8j" path="res://explosion.tscn" id="13_vem6b"]
+[ext_resource type="AudioStream" uid="uid://dlxurikrujma8" path="res://audio/voiceover_male/source/congratulations.ogg" id="17_hov7j"]
+[ext_resource type="AudioStream" uid="uid://dueswjnhayu61" path="res://audio/voiceover_male/source/mission_completed.ogg" id="18_h3gik"]
+[ext_resource type="AudioStream" uid="uid://b1llrwwpjudhh" path="res://audio/voiceover_male/source/game_over.ogg" id="19_pr0gb"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "fade"
@@ -115,6 +119,18 @@ libraries = {
 [node name="pew" type="AudioStreamPlayer" parent="player"]
 stream = ExtResource("10_tgbnn")
 volume_db = -20.0
+
+[node name="explosion" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource("12_oeh33")
+
+[node name="GameOver" type="AudioStreamPlayer" parent="player"]
+stream = ExtResource("19_pr0gb")
+
+[node name="Congrats" type="AudioStreamPlayer" parent="player"]
+stream = ExtResource("17_hov7j")
+
+[node name="MissionCompleted" type="AudioStreamPlayer" parent="player"]
+stream = ExtResource("18_h3gik")
 
 [node name="enemies" type="Node2D" parent="." groups=["destroyed_enemies"]]
 
