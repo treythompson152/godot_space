@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://6vlw2apfthah"]
+
+[ext_resource type="Texture2D" uid="uid://tmadgy82fum8" path="res://craftpix-991101-free-pixel-art-enemy-spaceship-2d-sprites/PNG_Animations/Explosions/Ship1_Explosion/Ship1_Explosion_009.png" id="1_8nlch"]
+[ext_resource type="Texture2D" uid="uid://d05mg5i775oph" path="res://craftpix-991101-free-pixel-art-enemy-spaceship-2d-sprites/PNG_Animations/Explosions/Ship1_Explosion/Ship1_Explosion_012.png" id="2_wgoau"]
+[ext_resource type="Texture2D" uid="uid://dp70ju8i6pvpu" path="res://craftpix-991101-free-pixel-art-enemy-spaceship-2d-sprites/PNG_Animations/Explosions/Ship1_Explosion/Ship1_Explosion_013.png" id="3_dvuu4"]
+[ext_resource type="Texture2D" uid="uid://ct7e802m5iylb" path="res://craftpix-991101-free-pixel-art-enemy-spaceship-2d-sprites/PNG_Animations/Explosions/Ship1_Explosion/Ship1_Explosion_014.png" id="4_x6wvk"]
+[ext_resource type="Texture2D" uid="uid://dtxdjutkslv1n" path="res://craftpix-991101-free-pixel-art-enemy-spaceship-2d-sprites/PNG_Animations/Explosions/Ship1_Explosion/Ship1_Explosion_017.png" id="5_32e1v"]
+[ext_resource type="Texture2D" uid="uid://dwyb2bam17bcn" path="res://craftpix-991101-free-pixel-art-enemy-spaceship-2d-sprites/PNG_Animations/Explosions/Ship1_Explosion/Ship1_Explosion_019.png" id="6_vpqc6"]
+[ext_resource type="Texture2D" uid="uid://csbms6rgkpehx" path="res://craftpix-991101-free-pixel-art-enemy-spaceship-2d-sprites/PNG_Animations/Explosions/Ship1_Explosion/Ship1_Explosion_020.png" id="7_uqyf6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ktaix"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8nlch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_wgoau")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dvuu4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x6wvk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_32e1v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vpqc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_uqyf6")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 7.0
+}]
+
+[node name="SmallExplosion" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ktaix")
+animation = &"explosion"
+frame = 7
+frame_progress = 1.0

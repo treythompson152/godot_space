@@ -14,6 +14,7 @@ func _on_start_button_pressed():
 	$Title.hide()
 	$Subtitle.hide()
 	show_message("Level 1 - Goal: 5 points")
+	$Ready.play()
 	await $MessageTimer.timeout
 	start_game.emit()
 	

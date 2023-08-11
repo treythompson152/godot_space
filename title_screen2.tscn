@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dj2fowevev1gw"]
+[gd_scene load_steps=8 format=3 uid="uid://dj2fowevev1gw"]
 
 [ext_resource type="Script" path="res://title_screen2.gd" id="1_02xji"]
+[ext_resource type="AudioStream" uid="uid://cn0gsv6ryp710" path="res://audio/voiceover_male/source/ready.ogg" id="2_1jnpt"]
 [ext_resource type="FontFile" uid="uid://cndm7urjb1pck" path="res://interface/fonts/kenvector_future_thin.ttf" id="2_oeu83"]
 [ext_resource type="FontFile" uid="uid://dctotd3cu671j" path="res://interface/fonts/kenvector_future.ttf" id="3_r6f6t"]
 [ext_resource type="AudioStream" uid="uid://bbhdwvq61kyaw" path="res://audio/ui_sfx/source/switch37.ogg" id="4_7dgdt"]
@@ -13,6 +14,9 @@ events = [SubResource("InputEventAction_t71y2")]
 
 [node name="TitleScreen" type="CanvasLayer"]
 script = ExtResource("1_02xji")
+
+[node name="Ready" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_1jnpt")
 
 [node name="StartButton" type="Button" parent="."]
 anchors_preset = -1
@@ -45,6 +49,7 @@ wait_time = 3.0
 
 [node name="Click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_7dgdt")
+volume_db = -20.0
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]

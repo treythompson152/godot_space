@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://de8lwv2a3rtuw"]
+[gd_scene load_steps=27 format=3 uid="uid://de8lwv2a3rtuw"]
 
 [ext_resource type="Script" path="res://main3.gd" id="1_qaoha"]
 [ext_resource type="Texture2D" uid="uid://ccn3vhggcnvag" path="res://backgrounds/stars_small_1024.png" id="2_c176a"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" path="res://laser.gd" id="9_mkoi0"]
 [ext_resource type="Script" path="res://EnemySpawner5.gd" id="10_82s70"]
 [ext_resource type="AudioStream" uid="uid://cmo38wm84gqxb" path="res://audio/digital_sfx/source/laser7.ogg" id="10_c84cv"]
-[ext_resource type="AudioStream" uid="uid://weyteacc0hac" path="res://audio/digital_sfx/source/zap2.ogg" id="10_yu6tb"]
 [ext_resource type="Script" path="res://EnemySpawner3.gd" id="11_gsfql"]
 [ext_resource type="Script" path="res://EnemySpawner4.gd" id="11_k5rxk"]
 [ext_resource type="PackedScene" uid="uid://b8v3iq5pdafw8" path="res://hud.tscn" id="12_i2v3s"]
@@ -23,6 +22,8 @@
 [ext_resource type="AudioStream" uid="uid://dlxurikrujma8" path="res://audio/voiceover_male/source/congratulations.ogg" id="20_eidk1"]
 [ext_resource type="AudioStream" uid="uid://dueswjnhayu61" path="res://audio/voiceover_male/source/mission_completed.ogg" id="21_7vm6d"]
 [ext_resource type="AudioStream" uid="uid://dmje2p54xvraa" path="res://audio/voiceover_male/source/you_win.ogg" id="22_ftob5"]
+[ext_resource type="AudioStream" uid="uid://c5k86vtllxmwo" path="res://audio/fsm-team-escp-space-floating.mp3" id="24_axs5l"]
+[ext_resource type="AudioStream" uid="uid://pq1jcc24my56" path="res://audio/vyra-mars-colony.mp3" id="25_qvw8s"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "fade"
@@ -111,10 +112,6 @@ drag_bottom_margin = 0.0
 [node name="laser" parent="player" instance=ExtResource("8_wgqq7")]
 script = ExtResource("9_mkoi0")
 
-[node name="lazersfx" type="AudioStreamPlayer" parent="player/laser"]
-stream = ExtResource("10_yu6tb")
-volume_db = -20.0
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="player"]
 libraries = {
 "": SubResource("AnimationLibrary_42o2e")
@@ -136,7 +133,7 @@ stream = ExtResource("22_ftob5")
 [node name="GameOver" type="AudioStreamPlayer" parent="player"]
 stream = ExtResource("15_s8t71")
 
-[node name="explosion" type="AudioStreamPlayer2D" parent="player"]
+[node name="explosion" type="AudioStreamPlayer" parent="player"]
 stream = ExtResource("16_whc1i")
 
 [node name="enemies" type="Node2D" parent="."]
@@ -159,6 +156,14 @@ script = ExtResource("11_gsfql")
 
 [node name="TitleScreen" parent="." instance=ExtResource("14_hujqe")]
 script = ExtResource("16_xdloq")
+
+[node name="ThemeMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_axs5l")
+volume_db = -10.0
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("25_qvw8s")
+volume_db = -15.0
 
 [connection signal="loading_screen" from="." to="player" method="_on_main_loading_screen"]
 [connection signal="area_entered" from="player" to="player" method="_on_player_area_entered"]

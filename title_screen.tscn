@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://nerbd4aiw0se"]
+[gd_scene load_steps=8 format=3 uid="uid://nerbd4aiw0se"]
 
 [ext_resource type="FontFile" uid="uid://cndm7urjb1pck" path="res://interface/fonts/kenvector_future_thin.ttf" id="1_3h1ah"]
 [ext_resource type="Script" path="res://title_screen.gd" id="1_5sxyq"]
 [ext_resource type="FontFile" uid="uid://dctotd3cu671j" path="res://interface/fonts/kenvector_future.ttf" id="2_emtw2"]
 [ext_resource type="AudioStream" uid="uid://bbhdwvq61kyaw" path="res://audio/ui_sfx/source/switch37.ogg" id="4_ykfhu"]
+[ext_resource type="AudioStream" uid="uid://cn0gsv6ryp710" path="res://audio/voiceover_male/source/ready.ogg" id="5_58rs6"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_t71y2"]
 action = &"start_game"
@@ -57,8 +58,8 @@ wait_time = 3.0
 [node name="Click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ykfhu")
 
-[node name="ThemeMusic" type="AudioStreamPlayer" parent="."]
-autoplay = true
+[node name="Ready" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_58rs6")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]

@@ -11,10 +11,13 @@ var counter = 1
 @export var velocity = 2000
 @export var turning = 4.0
 @export var health = 10
+@export var score = 0
 
 var Bullet = preload("res://player_bullet.tscn")
 var Explosion = preload("res://explosion.tscn")
-@export var score = 0
+var SmallExplosion = preload("res://small_explosion.tscn")
+
+
 
 func _process(delta):
 	if Input.is_action_pressed("turn_left"):
@@ -24,6 +27,10 @@ func _process(delta):
 	if Input.is_action_just_pressed("fire"):
 		var bullet_instance = Bullet.instantiate().init(self, 4000, true)
 		$pew.play()
+	if Input.is_action_just_pressed("dash"):
+		velocity = 3000
+	if Input.is_action_just_released("dash"):
+		velocity = 2000
  
 	gamepad(delta)
 	position += Vector2.RIGHT.rotated(rotation) * velocity * delta
@@ -33,11 +40,11 @@ func _process(delta):
 		hide_enemies.emit()
 		hide_enemies_flag = true
 		level_complete.emit()
+		velocity = 0
 		$Congrats.play()
 		await get_tree().create_timer(2.0).timeout
 		$MissionCompleted.play()
-		velocity = 0
-		await get_tree().create_timer(3.0).timeout
+		await get_tree().create_timer(1.5).timeout
 		win.emit()
 		
 	if hide_enemies_flag:
@@ -66,8 +73,19 @@ func _on_player_area_entered(area):
 				$GameOver.play()
 				dead.emit()
 			$crash_sound.play()
+			flicker()
 			await get_tree().create_timer(1.0).timeout
 
 
 func _on_main_loading_screen():
 	loading_screen = true
+	
+func flicker():
+	for i in range(4):
+		hide()
+		await get_tree().create_timer(0.05).timeout
+		show()
+		await get_tree().create_timer(0.05).timeout
+	
+
+

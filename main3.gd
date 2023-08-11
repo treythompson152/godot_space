@@ -2,6 +2,9 @@ extends Node2D
 
 signal loading_screen
 	
+func _ready():
+	$ThemeMusic.play()
+
 func _on_player_dead():
 	loading_screen.emit()
 	$TitleScreen.show_message("Game Over")
@@ -10,8 +13,8 @@ func _on_player_dead():
 
 
 func _on_title_screen_start_game():
-	# start spawning the enemies
-	# start music / sound effects
+	$ThemeMusic.stop()
+	$GameMusic.play()
 	pass
 
 func _on_player_win():

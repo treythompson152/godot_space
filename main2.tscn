@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b7u1qnmhokl38"]
+[gd_scene load_steps=26 format=3 uid="uid://b7u1qnmhokl38"]
 
 [ext_resource type="Script" path="res://main2.gd" id="1_gy47x"]
 [ext_resource type="Texture2D" uid="uid://ccn3vhggcnvag" path="res://backgrounds/stars_small_1024.png" id="2_t1672"]
@@ -20,6 +20,9 @@
 [ext_resource type="AudioStream" uid="uid://ksnxjha6mcr0" path="res://audio/explosion.wav" id="15_rf5x8"]
 [ext_resource type="AudioStream" uid="uid://dlxurikrujma8" path="res://audio/voiceover_male/source/congratulations.ogg" id="17_qbjqa"]
 [ext_resource type="AudioStream" uid="uid://dueswjnhayu61" path="res://audio/voiceover_male/source/mission_completed.ogg" id="18_fxwwv"]
+[ext_resource type="AudioStream" uid="uid://pq1jcc24my56" path="res://audio/vyra-mars-colony.mp3" id="21_toxou"]
+[ext_resource type="AudioStream" uid="uid://c5k86vtllxmwo" path="res://audio/fsm-team-escp-space-floating.mp3" id="22_ifb0l"]
+[ext_resource type="AudioStream" uid="uid://bnqkrdggfrdqj" path="res://audio/voiceover_male/source/level_up.ogg" id="23_7lqbw"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "fade"
@@ -130,7 +133,7 @@ stream = ExtResource("18_fxwwv")
 [node name="GameOver" type="AudioStreamPlayer" parent="player"]
 stream = ExtResource("14_glehv")
 
-[node name="explosion" type="AudioStreamPlayer2D" parent="player"]
+[node name="explosion" type="AudioStreamPlayer" parent="player"]
 stream = ExtResource("15_rf5x8")
 
 [node name="enemies" type="Node2D" parent="."]
@@ -154,6 +157,17 @@ stream = ExtResource("17_qbjqa")
 
 [node name="MissionCompleted" type="AudioStreamPlayer" parent="Congrats"]
 stream = ExtResource("18_fxwwv")
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_toxou")
+volume_db = -15.0
+
+[node name="ThemeMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_ifb0l")
+volume_db = -10.0
+
+[node name="LevelUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_7lqbw")
 
 [connection signal="loading_screen" from="." to="player" method="_on_main_loading_screen"]
 [connection signal="area_entered" from="player" to="player" method="_on_player_area_entered"]

@@ -13,6 +13,7 @@ func _on_start_button_pressed():
 	$StartButton.hide()
 	$Subtitle.hide()
 	show_message("Level 3 - Goal: 20 points")
+	$Ready.play()
 	await $MessageTimer.timeout
 	start_game.emit()
 	
