@@ -7,7 +7,7 @@ signal hide_enemies
 
 var hide_enemies_flag = false
 var loading_screen = false
-var counter = 1
+var one_time_flag = true
 @export var velocity = 2000
 @export var turning = 4.0
 @export var health = 10
@@ -34,8 +34,8 @@ func _process(delta):
  
 	gamepad(delta)
 	position += Vector2.RIGHT.rotated(rotation) * velocity * delta
-	if (score >= 5 and counter == 1):
-		counter -= 1 
+	if (score >= 5 and one_time_flag):
+		one_time_flag = false
 		await get_tree().create_timer(1.0).timeout
 		hide_enemies.emit()
 		hide_enemies_flag = true
@@ -57,7 +57,8 @@ func gamepad(delta):
 func _on_player_area_entered(area):
 	if(!loading_screen):
 		var destroyed_enemies = get_tree().get_nodes_in_group("destroyed_enemies")
-		if !(area in destroyed_enemies):
+		var bases = get_tree().get_nodes_in_group("bases")
+		if (!(area in destroyed_enemies)or area in bases):
 			health -= 1
 			get_node("../HUD/health").value = health
 			if health <= 0:
