@@ -4,6 +4,7 @@ signal dead
 signal win
 signal level_complete
 signal hide_enemies
+signal shield_activation
 
 var hide_enemies_flag = false
 var loading_screen = false
@@ -58,7 +59,9 @@ func _on_player_area_entered(area):
 	if(!loading_screen):
 		var destroyed_enemies = get_tree().get_nodes_in_group("destroyed_enemies")
 		var bases = get_tree().get_nodes_in_group("bases")
-		if (!(area in destroyed_enemies)or area in bases):
+		if !(area in bases):
+			shield_activation.emit()
+		if !(area in destroyed_enemies or area in bases):
 			health -= 1
 			get_node("../HUD/health").value = health
 			if health <= 0:

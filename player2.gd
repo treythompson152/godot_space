@@ -55,7 +55,7 @@ func _on_player_area_entered(area):
 	if(!loading_screen):
 		var destroyed_enemies = get_tree().get_nodes_in_group("destroyed_enemies")
 		var bases = get_tree().get_nodes_in_group("bases")
-		if (!(area in destroyed_enemies)or area in bases):
+		if !(area in destroyed_enemies or area in bases):
 			health -= 1
 			get_node("../HUD/health").value = health
 			if health <= 0:
