@@ -11,11 +11,13 @@ var Explosion = preload("res://explosion.tscn")
 @onready var player = get_node("/root/main/player")
 
 
-
+# Starts the enemy pointed at the player
 func _ready():
 	position = player.position + Vector2.RIGHT.rotated(randf_range(0, PI*2)) * 5000
 	rotation = player.position.angle_to_point(position) 
 
+
+# Constantly trackets the player and fires when in range
 func _process(delta):
 	var d = player.position.angle_to_point(position) 
 	rotation = Util.rotate_toward(rotation, d, TURNING*delta)
@@ -28,8 +30,11 @@ func _process(delta):
 		if position.distance_to(player.position) < 3000:
 			Bullet.instantiate().init(self, 3000, false)
 
+
+# Handles the destruction of enemies
 func _on_enemy_area_entered(area):
 	if !destroyed:
+		# The enemy only is destroyed when it is hit with a bullet, not when the player runs into the enemy
 		var player_bullets = get_tree().get_nodes_in_group("player_bullets")
 		if area in player_bullets:
 			destroyed = true

@@ -18,7 +18,7 @@ var Explosion = preload("res://explosion.tscn")
 var SmallExplosion = preload("res://small_explosion.tscn")
 
 
-
+# Taking in input from the user and constantly checking for a win
 func _process(delta):
 	if Input.is_action_pressed("turn_left"):
 		rotation -= turning * delta
@@ -31,9 +31,8 @@ func _process(delta):
 		velocity = 3000
 	if Input.is_action_just_released("dash"):
 		velocity = 2000
- 
-	gamepad(delta)
 	position += Vector2.RIGHT.rotated(rotation) * velocity * delta
+	# one_time_flag makes sure this is only executed a single time
 	if (score >= 5 and one_time_flag):
 		one_time_flag = false
 		await get_tree().create_timer(1.0).timeout
@@ -46,14 +45,11 @@ func _process(delta):
 		$MissionCompleted.play()
 		await get_tree().create_timer(1.5).timeout
 		win.emit()
-		
 	if hide_enemies_flag:
 		hide_enemies.emit()
-		
-		
-func gamepad(delta):
-	pass
 
+
+# Handles when the player takes damage from an enemy bullet or enemy collision
 func _on_player_area_entered(area):
 	if(!loading_screen):
 		var destroyed_enemies = get_tree().get_nodes_in_group("destroyed_enemies")
@@ -77,9 +73,12 @@ func _on_player_area_entered(area):
 			await get_tree().create_timer(1.0).timeout
 
 
+# switches boolean on true when reaching the loading screen
 func _on_main_loading_screen():
 	loading_screen = true
-	
+
+
+# Function to show the player getting hit and taking damage
 func flicker():
 	for i in range(4):
 		hide()

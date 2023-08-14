@@ -1,10 +1,11 @@
 extends Area2D
 
-var charge = 0.0
 
 enum  {CHARGING, DISCHARGING}
+var charge = 0.0
 var laser = DISCHARGING
 
+# When the spacebar is held, it will charge up a powerful lazer
 func _process(delta):
 	if Input.is_action_just_pressed("fire") and charge < 0.01:
 		laser = CHARGING
