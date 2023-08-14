@@ -160,7 +160,7 @@ stream = ExtResource("18_fxwwv")
 
 [node name="GameMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("21_toxou")
-volume_db = -15.0
+volume_db = -10.0
 
 [node name="ThemeMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_ifb0l")

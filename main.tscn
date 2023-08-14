@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dkn6il5jne18b"]
+[gd_scene load_steps=24 format=3 uid="uid://dkn6il5jne18b"]
 
 [ext_resource type="Texture2D" uid="uid://ccn3vhggcnvag" path="res://backgrounds/stars_small_1024.png" id="1"]
 [ext_resource type="Script" path="res://main.gd" id="1_b4qfr"]
@@ -11,13 +11,11 @@
 [ext_resource type="Script" path="res://EnemySpawner.gd" id="7_r0y12"]
 [ext_resource type="PackedScene" uid="uid://dmqfh0ce1byeu" path="res://laser.tscn" id="8_wiwb4"]
 [ext_resource type="Script" path="res://laser.gd" id="9_5naqy"]
-[ext_resource type="PackedScene" uid="uid://vtd4v1my5a46" path="res://shield.tscn" id="10_cdlqt"]
 [ext_resource type="AudioStream" uid="uid://cmo38wm84gqxb" path="res://audio/digital_sfx/source/laser7.ogg" id="10_tgbnn"]
 [ext_resource type="PackedScene" uid="uid://nerbd4aiw0se" path="res://title_screen.tscn" id="11_tr7fe"]
 [ext_resource type="AudioStream" uid="uid://ksnxjha6mcr0" path="res://audio/explosion.wav" id="12_oeh33"]
 [ext_resource type="PackedScene" uid="uid://bjfgb5482po8j" path="res://explosion.tscn" id="13_vem6b"]
 [ext_resource type="AudioStream" uid="uid://dlxurikrujma8" path="res://audio/voiceover_male/source/congratulations.ogg" id="17_hov7j"]
-[ext_resource type="Script" path="res://BaseSpawner.gd" id="17_x4qun"]
 [ext_resource type="AudioStream" uid="uid://dueswjnhayu61" path="res://audio/voiceover_male/source/mission_completed.ogg" id="18_h3gik"]
 [ext_resource type="AudioStream" uid="uid://b1llrwwpjudhh" path="res://audio/voiceover_male/source/game_over.ogg" id="19_pr0gb"]
 [ext_resource type="AudioStream" uid="uid://pq1jcc24my56" path="res://audio/vyra-mars-colony.mp3" id="20_yphkj"]
@@ -111,8 +109,6 @@ drag_bottom_margin = 0.0
 [node name="laser" parent="player" instance=ExtResource("8_wiwb4")]
 script = ExtResource("9_5naqy")
 
-[node name="shield" parent="player" instance=ExtResource("10_cdlqt")]
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="player"]
 libraries = {
 "": SubResource("AnimationLibrary_42o2e")
@@ -140,10 +136,6 @@ stream = ExtResource("12_oeh33")
 autostart = true
 script = ExtResource("7_r0y12")
 
-[node name="BaseSpawner" type="Timer" parent="enemies"]
-autostart = true
-script = ExtResource("17_x4qun")
-
 [node name="HUD" parent="." instance=ExtResource("7_psy34")]
 
 [node name="TitleScreen" parent="." instance=ExtResource("11_tr7fe")]
@@ -152,7 +144,7 @@ script = ExtResource("17_x4qun")
 
 [node name="GameMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("20_yphkj")
-volume_db = -15.0
+volume_db = -10.0
 
 [node name="ThemeMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("21_xlxli")
@@ -165,12 +157,8 @@ stream = ExtResource("21_cd72q")
 [connection signal="area_entered" from="player" to="player" method="_on_player_area_entered"]
 [connection signal="dead" from="player" to="." method="_on_player_dead"]
 [connection signal="hide_enemies" from="player" to="enemies/EnemySpawner" method="_on_player_hide_enemies"]
-[connection signal="hide_enemies" from="player" to="enemies/BaseSpawner" method="_on_player_hide_bases"]
 [connection signal="level_complete" from="player" to="TitleScreen" method="_on_player_level_complete"]
-[connection signal="shield_activation" from="player" to="player/shield" method="_on_player_shield_activation"]
 [connection signal="win" from="player" to="." method="_on_player_win"]
 [connection signal="timeout" from="enemies/EnemySpawner" to="enemies/EnemySpawner" method="_on_enemy_spawner_timeout"]
-[connection signal="timeout" from="enemies/BaseSpawner" to="enemies/BaseSpawner" method="_on_enemy_spawner_timeout"]
 [connection signal="start_game" from="TitleScreen" to="." method="_on_title_screen_start_game"]
 [connection signal="start_game" from="TitleScreen" to="enemies/EnemySpawner" method="_on_title_screen_start_game"]
-[connection signal="start_game" from="TitleScreen" to="enemies/BaseSpawner" method="_on_title_screen_start_game"]
