@@ -1,12 +1,11 @@
 res://default_env.tres
+res://enemy.tscn
 res://main.tscn
-res://player.gd
 res://enemy_bullet.tscn
 res://player_bullet.tscn
 res://hud.tscn
 res://enemy2.tscn
 res://enemy3.tscn
-res://enemy.tscn
 res://title_screen.tscn
 res://title_screen2.tscn
 res://main2.tscn
@@ -14,9 +13,7 @@ res://laser.tscn
 res://main3.tscn
 res://enemy4.tscn
 res://enemy5.tscn
-res://base.tscn
-res://shield.tscn
-res://base.gd
-res://player3.gd
-res://player2.gd
-res://shield.gd
+res://enemy6.tscn
+res://audio/sfx_library.gd
+res://explosion.tscn
+res://audio/voice_female.tscn

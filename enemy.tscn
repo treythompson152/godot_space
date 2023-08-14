@@ -1,21 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7r0vgiiocli6"]
+[gd_scene load_steps=6 format=3 uid="uid://c7r0vgiiocli6"]
 
 [ext_resource type="Texture2D" uid="uid://cif5ypaknhkf6" path="res://ships/Faction10-Spaceships-by-MillionthVector/destroyer.png" id="1"]
 [ext_resource type="Script" path="res://enemy.gd" id="1_0byes"]
-[ext_resource type="Texture2D" uid="uid://e4othb37xv2h" path="res://objects/sparkling-fireball-small.png" id="3"]
 [ext_resource type="AudioStream" uid="uid://ksnxjha6mcr0" path="res://audio/explosion.wav" id="4"]
-
-[sub_resource type="CanvasItemMaterial" id="2"]
-particles_animation = true
-particles_anim_h_frames = 8
-particles_anim_v_frames = 7
-particles_anim_loop = false
-
-[sub_resource type="Curve" id="3"]
-min_value = -200.0
-max_value = 200.0
-_data = [Vector2(0.0079561, 200), 0.0, 0.0, 0, 0, Vector2(0.525052, -200), -289.802, 0.0, 0, 0]
-point_count = 2
 
 [sub_resource type="Animation" id="1"]
 resource_name = "fade"
@@ -41,19 +28,6 @@ _data = {
 position = Vector2(0.801025, -0.809296)
 collision_layer = 2
 script = ExtResource("1_0byes")
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-visible = false
-material = SubResource("2")
-emitting = false
-amount = 1
-one_shot = true
-preprocess = 0.3
-fixed_fps = 50
-texture = ExtResource("3")
-spread = 180.0
-gravity = Vector2(0, 0)
-linear_accel_curve = SubResource("3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

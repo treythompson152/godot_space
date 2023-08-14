@@ -1,329 +1,250 @@
-[gd_scene load_steps=94 format=2]
+[gd_scene load_steps=48 format=3 uid="uid://df2l2xy3bvsfk"]
 
-[ext_resource path="res://audio/sfx_library.gd" type="Script" id=1]
-[ext_resource path="res://audio/voiceover_female/source/1.ogg" type="AudioStream" id=2]
-[ext_resource path="res://audio/voiceover_female/source/2.ogg" type="AudioStream" id=3]
-[ext_resource path="res://audio/voiceover_female/source/3.ogg" type="AudioStream" id=4]
-[ext_resource path="res://audio/voiceover_female/source/4.ogg" type="AudioStream" id=5]
-[ext_resource path="res://audio/voiceover_female/source/5.ogg" type="AudioStream" id=6]
-[ext_resource path="res://audio/voiceover_female/source/6.ogg" type="AudioStream" id=7]
-[ext_resource path="res://audio/voiceover_female/source/7.ogg" type="AudioStream" id=8]
-[ext_resource path="res://audio/voiceover_female/source/8.ogg" type="AudioStream" id=9]
-[ext_resource path="res://audio/voiceover_female/source/9.ogg" type="AudioStream" id=10]
-[ext_resource path="res://audio/voiceover_female/source/10.ogg" type="AudioStream" id=11]
-[ext_resource path="res://audio/voiceover_female/source/congratulations.ogg" type="AudioStream" id=12]
-[ext_resource path="res://audio/voiceover_female/source/correct.ogg" type="AudioStream" id=13]
-[ext_resource path="res://audio/voiceover_female/source/final_round.ogg" type="AudioStream" id=14]
-[ext_resource path="res://audio/voiceover_female/source/game_over.ogg" type="AudioStream" id=15]
-[ext_resource path="res://audio/voiceover_female/source/go.ogg" type="AudioStream" id=16]
-[ext_resource path="res://audio/voiceover_female/source/hurry_up.ogg" type="AudioStream" id=17]
-[ext_resource path="res://audio/voiceover_female/source/its_a_tie.ogg" type="AudioStream" id=18]
-[ext_resource path="res://audio/voiceover_female/source/level.ogg" type="AudioStream" id=19]
-[ext_resource path="res://audio/voiceover_female/source/level_up.ogg" type="AudioStream" id=20]
-[ext_resource path="res://audio/voiceover_female/source/mission_completed.ogg" type="AudioStream" id=21]
-[ext_resource path="res://audio/voiceover_female/source/mission_failed.ogg" type="AudioStream" id=22]
-[ext_resource path="res://audio/voiceover_female/source/new_highscore.ogg" type="AudioStream" id=23]
-[ext_resource path="res://audio/voiceover_female/source/objective_achieved.ogg" type="AudioStream" id=24]
-[ext_resource path="res://audio/voiceover_female/source/power_up.ogg" type="AudioStream" id=25]
-[ext_resource path="res://audio/voiceover_female/source/ready.ogg" type="AudioStream" id=26]
-[ext_resource path="res://audio/voiceover_female/source/round.ogg" type="AudioStream" id=27]
-[ext_resource path="res://audio/voiceover_female/source/set.ogg" type="AudioStream" id=28]
-[ext_resource path="res://audio/voiceover_female/source/time_over.ogg" type="AudioStream" id=29]
-[ext_resource path="res://audio/voiceover_female/source/war_call_for_backup.ogg" type="AudioStream" id=30]
-[ext_resource path="res://audio/voiceover_female/source/war_cover_me.ogg" type="AudioStream" id=31]
-[ext_resource path="res://audio/voiceover_female/source/war_fire_in_the_hole.ogg" type="AudioStream" id=32]
-[ext_resource path="res://audio/voiceover_female/source/war_get_down.ogg" type="AudioStream" id=33]
-[ext_resource path="res://audio/voiceover_female/source/war_go_go_go.ogg" type="AudioStream" id=34]
-[ext_resource path="res://audio/voiceover_female/source/war_hold.ogg" type="AudioStream" id=35]
-[ext_resource path="res://audio/voiceover_female/source/war_look_out.ogg" type="AudioStream" id=36]
-[ext_resource path="res://audio/voiceover_female/source/war_medic.ogg" type="AudioStream" id=37]
-[ext_resource path="res://audio/voiceover_female/source/war_reloading.ogg" type="AudioStream" id=38]
-[ext_resource path="res://audio/voiceover_female/source/war_rpg.ogg" type="AudioStream" id=39]
-[ext_resource path="res://audio/voiceover_female/source/war_sniper.ogg" type="AudioStream" id=40]
-[ext_resource path="res://audio/voiceover_female/source/war_supressing_fire.ogg" type="AudioStream" id=41]
-[ext_resource path="res://audio/voiceover_female/source/war_target_destroyed.ogg" type="AudioStream" id=42]
-[ext_resource path="res://audio/voiceover_female/source/war_target_engaged.ogg" type="AudioStream" id=43]
-[ext_resource path="res://audio/voiceover_female/source/war_watch_my_back.ogg" type="AudioStream" id=44]
-[ext_resource path="res://audio/voiceover_female/source/wrong.ogg" type="AudioStream" id=45]
-[ext_resource path="res://audio/voiceover_female/source/you_lose.ogg" type="AudioStream" id=46]
-[ext_resource path="res://audio/voiceover_female/source/you_win.ogg" type="AudioStream" id=47]
+[sub_resource type="GDScript" id="GDScript_fm1t1"]
+script/source = "extends Node
 
-[sub_resource type="AudioStreamRandomizer" id=1]
-audio_stream = ExtResource( 2 )
+@export (String, DIR) var source_directory
 
-[sub_resource type="AudioStreamRandomizer" id=2]
-audio_stream = ExtResource( 3 )
+func _ready():
+	pass
+	
+func play(sfx = null):
+	if sfx:
+		get_node(sfx).play()
+	else:
+		get_child(randi()%get_child_count()).play()
+"
 
-[sub_resource type="AudioStreamRandomizer" id=3]
-audio_stream = ExtResource( 4 )
+[sub_resource type="AudioStreamRandomizer" id="1"]
 
-[sub_resource type="AudioStreamRandomizer" id=4]
-audio_stream = ExtResource( 5 )
+[sub_resource type="AudioStreamRandomizer" id="2"]
 
-[sub_resource type="AudioStreamRandomizer" id=5]
-audio_stream = ExtResource( 6 )
+[sub_resource type="AudioStreamRandomizer" id="3"]
 
-[sub_resource type="AudioStreamRandomizer" id=6]
-audio_stream = ExtResource( 7 )
+[sub_resource type="AudioStreamRandomizer" id="4"]
 
-[sub_resource type="AudioStreamRandomizer" id=7]
-audio_stream = ExtResource( 8 )
+[sub_resource type="AudioStreamRandomizer" id="5"]
 
-[sub_resource type="AudioStreamRandomizer" id=8]
-audio_stream = ExtResource( 9 )
+[sub_resource type="AudioStreamRandomizer" id="6"]
 
-[sub_resource type="AudioStreamRandomizer" id=9]
-audio_stream = ExtResource( 10 )
+[sub_resource type="AudioStreamRandomizer" id="7"]
 
-[sub_resource type="AudioStreamRandomizer" id=10]
-audio_stream = ExtResource( 11 )
+[sub_resource type="AudioStreamRandomizer" id="8"]
 
-[sub_resource type="AudioStreamRandomizer" id=11]
-audio_stream = ExtResource( 12 )
+[sub_resource type="AudioStreamRandomizer" id="9"]
 
-[sub_resource type="AudioStreamRandomizer" id=12]
-audio_stream = ExtResource( 13 )
+[sub_resource type="AudioStreamRandomizer" id="10"]
 
-[sub_resource type="AudioStreamRandomizer" id=13]
-audio_stream = ExtResource( 14 )
+[sub_resource type="AudioStreamRandomizer" id="11"]
 
-[sub_resource type="AudioStreamRandomizer" id=14]
-audio_stream = ExtResource( 15 )
+[sub_resource type="AudioStreamRandomizer" id="12"]
 
-[sub_resource type="AudioStreamRandomizer" id=15]
-audio_stream = ExtResource( 16 )
+[sub_resource type="AudioStreamRandomizer" id="13"]
 
-[sub_resource type="AudioStreamRandomizer" id=16]
-audio_stream = ExtResource( 17 )
+[sub_resource type="AudioStreamRandomizer" id="14"]
 
-[sub_resource type="AudioStreamRandomizer" id=17]
-audio_stream = ExtResource( 18 )
+[sub_resource type="AudioStreamRandomizer" id="15"]
 
-[sub_resource type="AudioStreamRandomizer" id=18]
-audio_stream = ExtResource( 19 )
+[sub_resource type="AudioStreamRandomizer" id="16"]
 
-[sub_resource type="AudioStreamRandomizer" id=19]
-audio_stream = ExtResource( 20 )
+[sub_resource type="AudioStreamRandomizer" id="17"]
 
-[sub_resource type="AudioStreamRandomizer" id=20]
-audio_stream = ExtResource( 21 )
+[sub_resource type="AudioStreamRandomizer" id="18"]
 
-[sub_resource type="AudioStreamRandomizer" id=21]
-audio_stream = ExtResource( 22 )
+[sub_resource type="AudioStreamRandomizer" id="19"]
 
-[sub_resource type="AudioStreamRandomizer" id=22]
-audio_stream = ExtResource( 23 )
+[sub_resource type="AudioStreamRandomizer" id="20"]
 
-[sub_resource type="AudioStreamRandomizer" id=23]
-audio_stream = ExtResource( 24 )
+[sub_resource type="AudioStreamRandomizer" id="21"]
 
-[sub_resource type="AudioStreamRandomizer" id=24]
-audio_stream = ExtResource( 25 )
+[sub_resource type="AudioStreamRandomizer" id="22"]
 
-[sub_resource type="AudioStreamRandomizer" id=25]
-audio_stream = ExtResource( 26 )
+[sub_resource type="AudioStreamRandomizer" id="23"]
 
-[sub_resource type="AudioStreamRandomizer" id=26]
-audio_stream = ExtResource( 27 )
+[sub_resource type="AudioStreamRandomizer" id="24"]
 
-[sub_resource type="AudioStreamRandomizer" id=27]
-audio_stream = ExtResource( 28 )
+[sub_resource type="AudioStreamRandomizer" id="25"]
 
-[sub_resource type="AudioStreamRandomizer" id=28]
-audio_stream = ExtResource( 29 )
+[sub_resource type="AudioStreamRandomizer" id="26"]
 
-[sub_resource type="AudioStreamRandomizer" id=29]
-audio_stream = ExtResource( 30 )
+[sub_resource type="AudioStreamRandomizer" id="27"]
 
-[sub_resource type="AudioStreamRandomizer" id=30]
-audio_stream = ExtResource( 31 )
+[sub_resource type="AudioStreamRandomizer" id="28"]
 
-[sub_resource type="AudioStreamRandomizer" id=31]
-audio_stream = ExtResource( 32 )
+[sub_resource type="AudioStreamRandomizer" id="29"]
 
-[sub_resource type="AudioStreamRandomizer" id=32]
-audio_stream = ExtResource( 33 )
+[sub_resource type="AudioStreamRandomizer" id="30"]
 
-[sub_resource type="AudioStreamRandomizer" id=33]
-audio_stream = ExtResource( 34 )
+[sub_resource type="AudioStreamRandomizer" id="31"]
 
-[sub_resource type="AudioStreamRandomizer" id=34]
-audio_stream = ExtResource( 35 )
+[sub_resource type="AudioStreamRandomizer" id="32"]
 
-[sub_resource type="AudioStreamRandomizer" id=35]
-audio_stream = ExtResource( 36 )
+[sub_resource type="AudioStreamRandomizer" id="33"]
 
-[sub_resource type="AudioStreamRandomizer" id=36]
-audio_stream = ExtResource( 37 )
+[sub_resource type="AudioStreamRandomizer" id="34"]
 
-[sub_resource type="AudioStreamRandomizer" id=37]
-audio_stream = ExtResource( 38 )
+[sub_resource type="AudioStreamRandomizer" id="35"]
 
-[sub_resource type="AudioStreamRandomizer" id=38]
-audio_stream = ExtResource( 39 )
+[sub_resource type="AudioStreamRandomizer" id="36"]
 
-[sub_resource type="AudioStreamRandomizer" id=39]
-audio_stream = ExtResource( 40 )
+[sub_resource type="AudioStreamRandomizer" id="37"]
 
-[sub_resource type="AudioStreamRandomizer" id=40]
-audio_stream = ExtResource( 41 )
+[sub_resource type="AudioStreamRandomizer" id="38"]
 
-[sub_resource type="AudioStreamRandomizer" id=41]
-audio_stream = ExtResource( 42 )
+[sub_resource type="AudioStreamRandomizer" id="39"]
 
-[sub_resource type="AudioStreamRandomizer" id=42]
-audio_stream = ExtResource( 43 )
+[sub_resource type="AudioStreamRandomizer" id="40"]
 
-[sub_resource type="AudioStreamRandomizer" id=43]
-audio_stream = ExtResource( 44 )
+[sub_resource type="AudioStreamRandomizer" id="41"]
 
-[sub_resource type="AudioStreamRandomizer" id=44]
-audio_stream = ExtResource( 45 )
+[sub_resource type="AudioStreamRandomizer" id="42"]
 
-[sub_resource type="AudioStreamRandomizer" id=45]
-audio_stream = ExtResource( 46 )
+[sub_resource type="AudioStreamRandomizer" id="43"]
 
-[sub_resource type="AudioStreamRandomizer" id=46]
-audio_stream = ExtResource( 47 )
+[sub_resource type="AudioStreamRandomizer" id="44"]
+
+[sub_resource type="AudioStreamRandomizer" id="45"]
+
+[sub_resource type="AudioStreamRandomizer" id="46"]
 
 [node name="sfx" type="Node"]
-script = ExtResource( 1 )
+script = SubResource("GDScript_fm1t1")
 source_directory = "res://audio/voiceover_female/source"
 
 [node name="1" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 1 )
+stream = SubResource("1")
 
 [node name="2" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 2 )
+stream = SubResource("2")
 
 [node name="3" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 3 )
+stream = SubResource("3")
 
 [node name="4" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 4 )
+stream = SubResource("4")
 
 [node name="5" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 5 )
+stream = SubResource("5")
 
 [node name="6" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 6 )
+stream = SubResource("6")
 
 [node name="7" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 7 )
+stream = SubResource("7")
 
 [node name="8" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 8 )
+stream = SubResource("8")
 
 [node name="9" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 9 )
+stream = SubResource("9")
 
 [node name="10" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 10 )
+stream = SubResource("10")
 
 [node name="congratulations" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 11 )
+stream = SubResource("11")
 
 [node name="correct" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 12 )
+stream = SubResource("12")
 
 [node name="final_round" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 13 )
+stream = SubResource("13")
 
 [node name="game_over" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 14 )
+stream = SubResource("14")
 
 [node name="go" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 15 )
+stream = SubResource("15")
 
 [node name="hurry_up" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 16 )
+stream = SubResource("16")
 
 [node name="its_a_tie" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 17 )
+stream = SubResource("17")
 
 [node name="level" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 18 )
+stream = SubResource("18")
 
 [node name="level_up" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 19 )
+stream = SubResource("19")
 
 [node name="mission_completed" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 20 )
+stream = SubResource("20")
 
 [node name="mission_failed" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 21 )
+stream = SubResource("21")
 
 [node name="new_highscore" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 22 )
+stream = SubResource("22")
 
 [node name="objective_achieved" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 23 )
+stream = SubResource("23")
 
 [node name="power_up" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 24 )
+stream = SubResource("24")
 
 [node name="ready" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 25 )
+stream = SubResource("25")
 
 [node name="round" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 26 )
+stream = SubResource("26")
 
 [node name="set" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 27 )
+stream = SubResource("27")
 
 [node name="time_over" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 28 )
+stream = SubResource("28")
 
 [node name="war_call_for_backup" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 29 )
+stream = SubResource("29")
 
 [node name="war_cover_me" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 30 )
+stream = SubResource("30")
 
 [node name="war_fire_in_the_hole" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 31 )
+stream = SubResource("31")
 
 [node name="war_get_down" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 32 )
+stream = SubResource("32")
 
 [node name="war_go_go_go" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 33 )
+stream = SubResource("33")
 
 [node name="war_hold" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 34 )
+stream = SubResource("34")
 
 [node name="war_look_out" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 35 )
+stream = SubResource("35")
 
 [node name="war_medic" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 36 )
+stream = SubResource("36")
 
 [node name="war_reloading" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 37 )
+stream = SubResource("37")
 
 [node name="war_rpg" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 38 )
+stream = SubResource("38")
 
 [node name="war_sniper" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 39 )
+stream = SubResource("39")
 
 [node name="war_supressing_fire" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 40 )
+stream = SubResource("40")
 
 [node name="war_target_destroyed" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 41 )
+stream = SubResource("41")
 
 [node name="war_target_engaged" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 42 )
+stream = SubResource("42")
 
 [node name="war_watch_my_back" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 43 )
+stream = SubResource("43")
 
 [node name="wrong" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 44 )
+stream = SubResource("44")
 
 [node name="you_lose" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 45 )
+stream = SubResource("45")
 
 [node name="you_win" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 46 )
+stream = SubResource("46")
