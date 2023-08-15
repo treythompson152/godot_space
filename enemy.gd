@@ -9,7 +9,7 @@ var destroyed = false
 var Bullet = preload("res://enemy_bullet.tscn")
 var Explosion = preload("res://explosion.tscn")
 @onready var player = get_node("/root/main/player")
-
+ 
 
 # Starts the enemy pointed at the player
 func _ready():
