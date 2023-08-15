@@ -67,8 +67,9 @@ func _on_player_area_entered(area):
 				$explosion.play()
 				await get_tree().create_timer(1.0).timeout
 				$GameOver.play()
-			$crash_sound.play()
-			flicker()
+			else:
+				$crash_sound.play()
+				flicker()
 			await get_tree().create_timer(1.0).timeout
 
 
