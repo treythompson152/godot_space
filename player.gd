@@ -58,6 +58,7 @@ func _on_player_area_entered(area):
 			get_node("../HUD/health").value = health
 			if health <= 0:
 				hide_enemies.emit()
+				dead.emit()
 				var explosion_instance = Explosion.instantiate()
 				get_parent().add_child(explosion_instance)
 				explosion_instance.position = position
@@ -67,7 +68,6 @@ func _on_player_area_entered(area):
 				$explosion.play()
 				await get_tree().create_timer(1.0).timeout
 				$GameOver.play()
-				dead.emit()
 			$crash_sound.play()
 			flicker()
 			await get_tree().create_timer(1.0).timeout
