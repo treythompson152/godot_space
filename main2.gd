@@ -5,7 +5,7 @@ signal loading_screen
 
 # Play the Theme Music once the game starts
 func _ready():
-	$ThemeMusic.play()
+	$ThemeMusic.play( )
 
 
 # Show Game Over and reload to the beginning
